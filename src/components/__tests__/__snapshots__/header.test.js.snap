@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <header
+    className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary makeStyles-root-1 MuiPaper-elevation4"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-9"
+      >
+        <a
+          aria-current="page"
+          className="makeStyles-logo-4 active"
+          href="/"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"
+              />
+            </svg>
+            <h6
+              className="MuiTypography-root MuiTypography-h6"
+            >
+              <strong>
+                TV SHOWS
+              </strong>
+            </h6>
+          </div>
+        </a>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+      >
+        <div
+          className="MuiPaper-root makeStyles-paper-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <a
+            aria-current={null}
+            href="/home"
+            onClick={[Function]}
+          >
+            <p
+              className="MuiTypography-root makeStyles-hover-5 MuiTypography-body1"
+            >
+              Home
+            </p>
+          </a>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+      >
+        <div
+          className="MuiPaper-root makeStyles-paper-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <a
+            aria-current="page"
+            className="makeStyles-activeLink-3"
+            href="/"
+            onClick={[Function]}
+            style={Object {}}
+          >
+            <p
+              className="MuiTypography-root makeStyles-hover-5 MuiTypography-body1"
+            >
+              Dashboard
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+`;

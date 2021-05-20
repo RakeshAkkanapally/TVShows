@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`verifying ShowItem component renders correctly 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardHeader-root makeStyles-header-3"
+    >
+      <div
+        className="MuiCardHeader-content"
+      >
+        <span
+          className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+        >
+          Under the Dome
+        </span>
+      </div>
+    </div>
+    <a
+      aria-current={null}
+      href="/show/1"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiCardMedia-root makeStyles-media-4"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg\\")",
+          }
+        }
+        title="Under the Dome"
+      />
+    </a>
+    <div
+      className="MuiCardContent-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
+      >
+        <strong>
+           Rating: 
+        </strong>
+         
+        6.6
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
+      >
+        <strong>
+           Genres: 
+        </strong>
+         
+        Drama,Science-Fiction,Thriller
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`verifying ShowItem component renders correctly when few props are not passed 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardHeader-root makeStyles-header-3"
+    >
+      <div
+        className="MuiCardHeader-content"
+      >
+        <span
+          className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+        >
+          Under the Dome
+        </span>
+      </div>
+    </div>
+    <a
+      aria-current={null}
+      href="/show/1"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiCardMedia-root makeStyles-media-4"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg\\")",
+          }
+        }
+        title="Under the Dome"
+      />
+    </a>
+    <div
+      className="MuiCardContent-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
+      >
+        <strong>
+           Rating: 
+        </strong>
+         
+        NA
+      </p>
+      <p
+        className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
+      >
+        <strong>
+           Genres: 
+        </strong>
+         
+        NA
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
 import { Card, CardContent, CardHeader, CardMedia, makeStyles, Typography } from "@material-ui/core";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(2),
         maxWidth: theme.spacing(35),
-        alignItems: 'center'
+        alignItems: "center"
     },
     card: {
         width: theme.spacing(30),
@@ -23,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         height: 340,
     },
     content: {
-        textAlign: 'center',
+        textAlign: "center",
         fontSize: theme.spacing(1.5)
     }
 }));
@@ -46,16 +47,27 @@ const Showitem = (props) => {
                 </NavLink>
                 <CardContent>
                     <Typography className={classes.content}>
-                        <strong> Rating: </strong> {props.rating.average ? `${props.rating.average}` : 'NA'}
+                        <strong> Rating: </strong> {props.rating.average ? `${props.rating.average}` : "NA"}
                     </Typography>
                     <Typography className={classes.content}>
-                        <strong> Genres: </strong> {props.genres ? `${props.genres}` : 'NA'}
+                        <strong> Genres: </strong> {props.genres ? `${props.genres}` : "NA"}
                     </Typography>
                 </CardContent>
 
             </Card>
         </div>
-    )
-}
+    );
+};
+
+Showitem.propTypes = {
+    name: PropTypes.string,
+    id: PropTypes.number,
+    image: PropTypes.object,
+    medium: PropTypes.string,
+    rating: PropTypes.object,
+    average: PropTypes.string,
+    genres: PropTypes.array,
+
+};
 
 export default Showitem;

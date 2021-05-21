@@ -1,22 +1,22 @@
-import { makeStyles, InputBase, IconButton, Grid } from '@material-ui/core';
-import { useContext, useState } from 'react';
-import SearchIcon from '@material-ui/icons/Search';
-import ShowContext from '../reducers/showContext';
-
+import { makeStyles, InputBase, IconButton, Grid } from "@material-ui/core";
+import { useContext, useState } from "react";
+import SearchIcon from "@material-ui/icons/Search";
+import ShowContext from "../reducers/showContext";
+import React from "react";
 
 
 const useStyles = makeStyles(theme => ({
     input: {
-        backgroundColor: '#ddd',
-        minWidth: '40%',
-        maxWidth: '40%',
+        backgroundColor: "#ddd",
+        minWidth: "40%",
+        maxWidth: "40%",
         marginLeft: theme.spacing(2),
         padding: `0px ${theme.spacing(2)}px`,
         borderRadius: theme.spacing(2),
         margin: theme.spacing(2)
     },
     message: {
-        width: '40%',
+        width: "40%",
     },
 
 
@@ -26,16 +26,16 @@ const useStyles = makeStyles(theme => ({
 
 function Searchbar() {
     const classes = useStyles();
-    const [searchKey, setSearchKey] = useState('');
+    const [searchKey, setSearchKey] = useState("");
     const { searchShows } = useContext(ShowContext);
 
     const updateSearch = function (e) {
         setSearchKey(e.target.value);
-    }
+    };
     const onSearchHandler = function (e) {
         e.preventDefault();
         searchShows(searchKey);
-    }
+    };
 
     return (
         <Grid container
@@ -57,13 +57,13 @@ function Searchbar() {
                             />
                         </IconButton>}
                     onChange={updateSearch}
-                    inputProps={{ 'data-testid': 'search'}}
+                    inputProps={{ "data-testid": "search"}}
                 />
             </Grid>
                        
         </Grid>
 
-    )
+    );
 }
 
 export default Searchbar;

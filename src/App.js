@@ -1,17 +1,18 @@
-import Homepage from './pages/Homepage'
-import Header from './components/Header';
-import { makeStyles } from '@material-ui/core';
-import Showpage from './pages/Showpage';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import PopularShowspage from './pages/PopularShowspage';
+import Homepage from "./pages/Homepage";
+import Header from "./components/Header";
+import { makeStyles } from "@material-ui/core";
+import Showpage from "./pages/Showpage";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PopularShowspage from "./pages/PopularShowspage";
+import React  from "react";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
-    backgroundColor: '#000',
-    height: '100vh',
-    overflowX: 'hidden'
+    backgroundColor: "#000",
+    height: "100vh",
+    overflowX: "hidden"
   }
-}));
+});
 
 function App() {
   const classes = useStyles();

@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import Searchbar from "../Searchbar";
 import ShowContext from "../../reducers/showContext";
 import { render, screen } from "@testing-library/react";
-import userEvent from '@testing-library/user-event';
+import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/extend-expect";
 
 describe("Verifying Search bar component", () => {

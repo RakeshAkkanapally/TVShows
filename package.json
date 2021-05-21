@@ -44,6 +44,9 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/user-event": "^13.1.9"
+    "@testing-library/user-event": "^13.1.9",
+    "eslint": "^7.26.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-react": "^7.23.2"
   }
 }

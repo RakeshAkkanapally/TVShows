@@ -1,36 +1,36 @@
-import { AppBar, Grid, makeStyles, Toolbar, Typography } from '@material-ui/core'
-import Paper from '@material-ui/core/Paper';
-import MovieIcon from '@material-ui/icons/Movie';
-import { NavLink } from 'react-router-dom';
+import { AppBar, Grid, makeStyles, Toolbar, Typography } from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
+import MovieIcon from "@material-ui/icons/Movie";
+import { NavLink } from "react-router-dom";
+import React from "react";
 
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
     root: {
-        backgroundColor: '#000',
-        color: '#000'
+        backgroundColor: "#000",
+        color: "#000"
     },
     paper: {
-        backgroundColor: 'inherit',
-        textAlign: 'center',
-        color: '#fff',
+        backgroundColor: "inherit",
+        textAlign: "center",
+        color: "#fff",
     },
     activeLink: {
-        fontWeight: 'bold',
-        color: 'blue',
+        fontWeight: "bold",
+        color: "blue",
     },
     logo: {
-        textDecoration: 'none',
-        backgroundColor: 'inherit',
-        textAlign: 'center',
-        color: '#fff',
+        textDecoration: "none",
+        backgroundColor: "inherit",
+        textAlign: "center",
+        color: "#fff",
     },
     hover: {
-        '&:hover': {
+        "&:hover": {
             color: "#f00",
         }
     }
 
-}));
+});
 
 
 
@@ -75,7 +75,7 @@ function Header() {
                     </Grid>
                 </Grid>
             </AppBar>
-        </div>)
+        </div>);
 }
 
 export default Header;

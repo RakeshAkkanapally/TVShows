@@ -1,24 +1,24 @@
 import { CircularProgress, makeStyles, Grid, Paper, Table, TableRow, TableHead, TableCell, TableContainer, TableBody } from "@material-ui/core";
-import { useContext, useEffect } from "react"
+import React, { useContext, useEffect } from "react";
 import showContext from "../reducers/showContext";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
     },
     load: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
     },
     message: {
         margin: theme.spacing(5)
     },
     image: {
-        maxWidth: '58vh'
+        maxWidth: "58vh"
     },
     table: {
-        maxWidth: '70vh'
+        maxWidth: "70vh"
     }
 }));
 
@@ -62,7 +62,7 @@ const Showpage = (match) => {
                                         </TableRow>
                                         <TableRow>
                                             <TableCell align="left">Genres</TableCell>
-                                            <TableCell align="left">{selectedShow.genres ? `${selectedShow.genres}` : 'NA'}</TableCell>
+                                            <TableCell align="left">{selectedShow.genres ? `${selectedShow.genres}` : "NA"}</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell align="left">Premiered</TableCell>
@@ -98,7 +98,7 @@ const Showpage = (match) => {
 
 
         </div>
-    )
-}
+    );
+};
 
 export default Showpage;

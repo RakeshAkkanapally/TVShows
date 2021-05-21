@@ -1,23 +1,23 @@
 import { Checkbox, CircularProgress, FormControl, Input, InputLabel, ListItemText, MenuItem, Select } from "@material-ui/core";
-import { useEffect, useState, useContext } from "react";
-import { makeStyles, Grid } from '@material-ui/core';
+import React, { useEffect, useState, useContext } from "react";
+import { makeStyles, Grid } from "@material-ui/core";
 import showContext from "../reducers/showContext";
 import Showitem from "../components/Showitem";
-import ratingsData from "../data/ratings.json"
+import ratingsData from "../data/ratings.json";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         margin: theme.spacing(1),
         minWidth: theme.spacing(20),
         maxWidth: theme.spacing(30),
         borderRadius: theme.spacing(1)
     },
     load: {
-        display: 'flex',
-        justifyContent: 'center',
-        height: '50vh',
-        alignItems: 'center'
+        display: "flex",
+        justifyContent: "center",
+        height: "50vh",
+        alignItems: "center"
     }
 }));
 
@@ -104,7 +104,7 @@ const PopularShowspage = () => {
                             value={genre}
                             onChange={handleChange}
                             input={<Input />}
-                            renderValue={(selected) => selected.join(', ')}
+                            renderValue={(selected) => selected.join(", ")}
                             autoWidth
                         >
                             <MenuItem value="">
@@ -138,7 +138,7 @@ const PopularShowspage = () => {
 
             </Grid>
         </div>
-    )
-}
+    );
+};
 
 export default PopularShowspage;

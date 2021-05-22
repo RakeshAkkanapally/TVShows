@@ -1,6 +1,7 @@
 import { CircularProgress, makeStyles, Grid, Paper, Table, TableRow, TableHead, TableCell, TableContainer, TableBody } from "@material-ui/core";
 import React, { useContext, useEffect } from "react";
 import showContext from "../reducers/showContext";
+import Header from "./../components/Header";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -15,10 +16,13 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(5)
     },
     image: {
-        maxWidth: "58vh"
+        maxWidth: theme.spacing(50),
     },
     table: {
-        maxWidth: "70vh"
+        maxWidth: theme.spacing(50),
+    },
+    grid: {
+        padding: theme.spacing(6)
     }
 }));
 
@@ -34,7 +38,8 @@ const Showpage = (match) => {
 
     return (
         <div className={classes.root}>
-            <Grid container spacing={2}>
+            <Header />
+            <Grid container spacing={2} className={classes.grid}>
                 <Grid item xs={12} sm={6} container justify="flex-end" spacing={2}>
                         <img className={classes.image}
                             src={

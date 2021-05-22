@@ -1,10 +1,9 @@
-import Homepage from "./pages/Homepage";
-import Header from "./components/Header";
 import { makeStyles } from "@material-ui/core";
 import Showpage from "./pages/Showpage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PopularShowspage from "./pages/PopularShowspage";
+import Dashboardpage from "./pages/Dashboardpage";
 import React  from "react";
+import NotFoundpage from "./pages/NotFoundpage";
 
 const useStyles = makeStyles({
   root: {
@@ -20,12 +19,10 @@ function App() {
   return (
     <div className={classes.root}>
       <Router>
-        <Header />
         <Switch>
-          <Route exact path="/" component={PopularShowspage}/>
-          <Route exact path="/home" component={Homepage}/>
+          <Route exact path="/" component={Dashboardpage}/>
           <Route exact path="/show/:id" component={Showpage}/>
-
+          <Route path="*" component={NotFoundpage} />
         </Switch>
       </Router>
     </div>

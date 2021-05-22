@@ -12,13 +12,7 @@ exports[`verifying ShowItem component renders correctly 1`] = `
     >
       <div
         className="MuiCardHeader-content"
-      >
-        <span
-          className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
-        >
-          Under the Dome
-        </span>
-      </div>
+      />
     </div>
     <a
       aria-current={null}
@@ -73,13 +67,7 @@ exports[`verifying ShowItem component renders correctly when few props are not p
     >
       <div
         className="MuiCardHeader-content"
-      >
-        <span
-          className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
-        >
-          Under the Dome
-        </span>
-      </div>
+      />
     </div>
     <a
       aria-current={null}

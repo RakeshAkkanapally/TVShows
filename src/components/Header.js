@@ -3,16 +3,19 @@ import Paper from "@material-ui/core/Paper";
 import MovieIcon from "@material-ui/icons/Movie";
 import { NavLink } from "react-router-dom";
 import React from "react";
+import Searchbar from "./Searchbar";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     root: {
         backgroundColor: "#000",
-        color: "#000"
+        color: "#000",
     },
     paper: {
         backgroundColor: "inherit",
         textAlign: "center",
         color: "#fff",
+        width:theme.spacing(80),
+        fontSize: theme.spacing(1)
     },
     activeLink: {
         fontWeight: "bold",
@@ -30,7 +33,7 @@ const useStyles = makeStyles({
         }
     }
 
-});
+}));
 
 
 
@@ -45,7 +48,7 @@ function Header() {
                 <Grid container
                     direction="row"
                     alignItems="center">
-                    <Grid item xs={9} >
+                    <Grid item xs={6} >
                         <NavLink exact to="/" className={classes.logo}>
                                 <Toolbar>
                                     <MovieIcon fontSize="large" />
@@ -55,16 +58,18 @@ function Header() {
                                 </Toolbar>
                         </NavLink>
                     </Grid>
-                    <Grid item xs >
+                    <Grid item xs={6}>
                         <Paper className={classes.paper}>
-                            <NavLink exact to="/home" activeClassName={classes.activeLink}>
+                        <Searchbar />
+                            {/* <NavLink  exact to="/home" activeClassName={classes.activeLink}>
                                 <Typography className={classes.hover}>
-                                    Home
+                                    Search
                                 </Typography>
-                            </NavLink>
-                        </Paper>
+                            </NavLink> */}
+                        </Paper> 
+                         
                     </Grid>
-                    <Grid item xs >
+                    {/* <Grid item xs >
                         <Paper className={classes.paper}>
                             <NavLink exact to="/" activeClassName={classes.activeLink}>
                                 <Typography className={classes.hover}>
@@ -72,7 +77,7 @@ function Header() {
                                 </Typography>
                             </NavLink>
                         </Paper>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </AppBar>
         </div>);

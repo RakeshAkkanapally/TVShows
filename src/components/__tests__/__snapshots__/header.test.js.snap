@@ -55,7 +55,7 @@ exports[`renders correctly 1`] = `
             <p
               className="MuiTypography-root makeStyles-hover-5 MuiTypography-body1"
             >
-              Home
+              Search
             </p>
           </a>
         </div>

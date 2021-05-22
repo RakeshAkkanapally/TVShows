@@ -6,4 +6,6 @@ export const CLEAR_SHOW ="CLEAR_SHOW";
 export const ADD_ALERT ="ADD_ALERT";
 export const REMOVE_ALERT ="REMOVE_ALERT";
 export const CLEAR_FILTER_SHOWS ="CLEAR_FILTER_SHOWS";
-
+export const ALL_SHOWS="ALL_SHOWS";
+export const SET_RATING="SET_RATING";
+export const SET_GENRE="SET_GENRE";

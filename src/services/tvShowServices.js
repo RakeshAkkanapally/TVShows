@@ -1,50 +1,86 @@
 import { BaseService } from "./baseService";
 import { ServiceEndPointsList } from "./serviceEndpoints";
 
-export class tvShowService extends BaseService{
+export class tvShowService extends BaseService {
 
-    getAllShows(){
-        return new Promise((resolve, reject)=>{
-            this.get(ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI)
-            .then((data)=>{
-                resolve(data);
-            }).catch((reason)=>{
-                reject(reason);
-            });
-        });
+  async getAllShows() {
+    try {
+      const response = await this.get(
+        ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI
+      );
+      return await response;
+    } catch (e) {
+      console.error("The Promise is rejected!", e);
     }
+  }
 
-    getSearchShow(queryString){
-        return new Promise((resolve, reject)=>{
-            this.get(ServiceEndPointsList.baseUrl + ServiceEndPointsList.searchURI, "?q="+queryString)
-            .then((data)=>{
-                resolve(data);
-            }).catch((reason)=>{
-                reject(reason);
-            });
-        });
-    }
+  async getSearchShow(queryString) {
+      try{
+        const response= await this.get(
+            ServiceEndPointsList.baseUrl + ServiceEndPointsList.searchURI,
+            "?q=" + queryString
+          );
+          return await response;
+      }catch(e){
+        console.error("The Promise is rejected!", e);
+       
+      }
 
-    getSingleShow(queryString){
-        return new Promise((resolve, reject)=>{
-            this.get(ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI, "/"+queryString)
-            .then((data)=>{
-                resolve(data);
-            }).catch((reason)=>{
-                reject(reason);
-            });
-        });
-    }
-    getGenresAllShows(){
-        return new Promise((resolve, reject)=>{
-            this.get(ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI)
-            .then((data)=>{
-                resolve(data);
-            }).catch((reason)=>{
-                reject(reason);
-            });
-        });
-    }
+  }
+
+  async getSingleShow(queryString) {
+    try{
+        const response= await this.get(
+            ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI,
+            "/" + queryString
+          );
+          return await response;
+      }catch(e){
+        console.error("The Promise is rejected!", e);
+      }
     
-}
+  }
 
+  async getSeasons(queryString) {
+
+    try{
+        const response= await this.get(
+            ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI,
+            "/" + queryString + ServiceEndPointsList.seasonsURI
+          );
+          return await response;
+      }catch(e){
+        console.error("The Promise is rejected!", e);
+      }
+
+
+   
+  }
+
+  async getEpisode(queryString) {
+
+    try{
+        const response= await this.get(
+            ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI,
+            "/" + queryString + ServiceEndPointsList.episodesURI
+          );
+          return await response;
+      }catch(e){
+        console.error("The Promise is rejected!", e);
+      }
+
+
+  }
+  async getGenresAllShows() {
+
+    try{
+        const response= await  this.get(ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI);
+     
+          return await response;
+      }catch(e){
+        console.error("The Promise is rejected!", e);
+      }
+      
+   
+  }
+}

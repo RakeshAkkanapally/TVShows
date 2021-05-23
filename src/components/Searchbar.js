@@ -1,8 +1,9 @@
 import { makeStyles, InputBase, IconButton, Grid } from "@material-ui/core";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import ShowContext from "../reducers/showContext";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   input: {
@@ -21,20 +22,21 @@ const useStyles = makeStyles((theme) => ({
 
 function Searchbar() {
   const classes = useStyles();
-  const [searchKey, setSearchKey] = useState("");
-  const { searchShows, setSelectedRating, setSelectedGenre, getAllShows } =
-    useContext(ShowContext);
+  const { searchKey, setSearchKey, getAllShows, setSelectedRating, setSelectedGenre } = useContext(ShowContext);
+  const history = useHistory();
 
-  const updateSearch = async function (e) {
+  const updateSearch = function (e) {
     setSearchKey(e.target.value);
-    e.target.value.length === 0 && getAllShows();
+    if(e.target.value.length === 0) {
+      getAllShows();
+      setSelectedRating("All");
+      setSelectedGenre([]);
+    }
   };
-  
+
   const onSearchHandler = function (e) {
     e.preventDefault();
-    searchShows(searchKey);
-    setSelectedRating("All");
-    setSelectedGenre([]);
+    history.push("/search?q=" + searchKey);
   };
 
   return (

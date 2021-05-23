@@ -10,6 +10,10 @@ import {
   ALL_SHOWS,
   SET_GENRE,
   SET_RATING,
+  SET_SEASON,
+  SET_EPISODES,
+  SELECT_EPISODE,
+  SET_SEARCHKEY,
 } from "./actions";
 import React, { useReducer } from "react";
 import ShowContext from "./showContext";
@@ -21,12 +25,17 @@ const State = (props) => {
   const initialState = {
     shows: [],
     selectedShow: {},
+    searchKey: "",
     enteredShow: "",
     selectedRating: "All",
     selectedGenre: [],
     loading: false,
-    alertShow: { display: false, message: "" },
+    alertShow: "",
+    alertShowMessage: "",
     filterShows: [],
+    seasonsList: [],
+    episodesList: [],
+    selectedEpisode: {},
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -40,19 +49,13 @@ const State = (props) => {
     dispatch({ type: SET_GENRE, payload: genre });
   };
 
-  const searchShows = async (searchShow) => {
-    clearFilterShow();
-    dispatch({ type: IS_LOADING });
+  const setSearchKey = function (searchKey) {
+    dispatch({ type: SET_SEARCHKEY, payload: searchKey });
+  };
 
-    if (!searchShow) {
-      dispatch({
-        type: ADD_ALERT,
-        payload: { display: true, message: "Please enter something!" },
-      });
-      setTimeout(() => {
-        dispatch({ type: REMOVE_ALERT });
-      }, 10000);
-    } else {
+  const searchShows = async (searchShow) => {
+    if (searchShow) {
+      await clearFilterShow();
       const response = await service.getSearchShow(searchShow);
 
       if (response.data.length === 0) {
@@ -60,9 +63,6 @@ const State = (props) => {
           type: ADD_ALERT,
           payload: { display: true, message: "No Results Found!" },
         });
-        setTimeout(() => {
-          dispatch({ type: REMOVE_ALERT });
-        }, 10000);
       } else {
         dispatch({
           type: SEARCH_SHOWS,
@@ -70,11 +70,14 @@ const State = (props) => {
         });
       }
     }
+    setTimeout(() => {
+      dispatch({ type: REMOVE_ALERT });
+    }, 10000);
+    console.log(REMOVE_ALERT);
   };
 
   const getShowDetails = async (showId) => {
-    
-    dispatch({ type: IS_LOADING });
+    clearFilterShow();
 
     const response = await service.getSingleShow(showId);
 
@@ -86,6 +89,42 @@ const State = (props) => {
     } else {
       dispatch({ type: SET_SHOW, payload: response.data });
     }
+  };
+
+  const getSeasonDetails = async (showId) => {
+    dispatch({ type: IS_LOADING });
+
+    const response = await service.getSeasons(showId);
+
+    if (response.data.length === 0) {
+      dispatch({
+        type: ADD_ALERT,
+        payload: { display: true, message: "No Season Details Found!" },
+      });
+    } else {
+      dispatch({ type: SET_SEASON, payload: response.data });
+    }
+  };
+
+  const getEpisodeDetails = async (showId, snum) => {
+    dispatch({ type: IS_LOADING });
+
+    const response = await service.getEpisode(showId);
+    if (response.data.length === 0) {
+      dispatch({
+        type: ADD_ALERT,
+        payload: { display: true, message: "No Season Details Found!" },
+      });
+    } else {
+      dispatch({
+        type: SET_EPISODES,
+        payload: { data: response.data, snum: snum },
+      });
+    }
+  };
+
+  const selectEpisode = (snum, epnum) => {
+    dispatch({ type: SELECT_EPISODE, payload: { snum: snum, epnum: epnum } });
   };
 
   const getfilterShows = async (showRating, showGenre) => {
@@ -100,20 +139,20 @@ const State = (props) => {
   };
 
   const clearShow = () => {
-   
     dispatch({
       type: CLEAR_SHOW,
     });
   };
 
   const clearFilterShow = () => {
-    
+    setSelectedRating("All");
+    setSelectedGenre([]);
+
     dispatch({
       type: CLEAR_FILTER_SHOWS,
     });
   };
- false && clearShow();
- false && clearFilterShow();
+  false && clearShow();
 
   return (
     <ShowContext.Provider
@@ -122,15 +161,24 @@ const State = (props) => {
         filterShows: state.filterShows,
         loading: state.loading,
         alertShow: state.alertShow,
+        alertShowMessage: state.alertShowMessage,
         selectedRating: state.selectedRating,
         selectedGenre: state.selectedGenre,
         selectedShow: state.selectedShow,
+        seasonsList: state.seasonsList,
+        selectedEpisode: state.selectedEpisode,
+        episodesList: state.episodesList,
+        searchKey: state.searchKey,
+        setSearchKey,
         searchShows,
         getShowDetails,
         getfilterShows,
         setSelectedGenre,
         setSelectedRating,
         getAllShows,
+        getSeasonDetails,
+        getEpisodeDetails,
+        selectEpisode,
       }}
     >
       {props.children}

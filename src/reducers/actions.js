@@ -9,3 +9,7 @@ export const CLEAR_FILTER_SHOWS ="CLEAR_FILTER_SHOWS";
 export const ALL_SHOWS="ALL_SHOWS";
 export const SET_RATING="SET_RATING";
 export const SET_GENRE="SET_GENRE";
+export const SET_SEASON="SET_SEASON";
+export const SET_EPISODES="SET_EPISODES";
+export const SELECT_EPISODE="SELECT_EPISODE";
+export const SET_SEARCHKEY="SET_SEARCHKEY";

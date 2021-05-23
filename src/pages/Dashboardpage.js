@@ -21,6 +21,7 @@ import Header from "../components/Header";
 import { ThemeProvider } from "styled-components";
 import { getGenres } from "../reducers/util";
 import { Alert } from "@material-ui/lab";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
     height: "50vh",
     alignItems: "center",
   },
+  message: {
+    margin: theme.spacing(9),
+  },
   gridList: {
     flexWrap: "nowrap",
     transform: "translateZ(0)",
@@ -54,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
   "@global": {
     ".MuiGridListTile-root": {
       width: theme.spacing(50),
+    },
+    ".MuiInput-root": {
+      padding: "0 0 0 10px",
     },
   },
 }));
@@ -68,33 +75,50 @@ const theme = createMuiTheme({
   },
 });
 
-const Dashboardpage = () => {
+const Dashboardpage = (match) => {
   const classes = useStyles();
   const {
     filterShows,
     getfilterShows,
     loading,
     alertShow,
+    alertShowMessage,
     getAllShows,
     selectedRating,
     setSelectedRating,
     selectedGenre,
     setSelectedGenre,
+    searchShows,
+    setSearchKey,
   } = useContext(showContext);
   const [genres, setGenres] = useState([]);
   let initialRender = useRef(true);
- 
+
   useEffect(async () => {
     setGenres(await getGenres());
-    await getAllShows();
     // eslint-disable-next-line
   }, []);
 
+
   useEffect(async () => {
-    initialRender.current
+    console.log(match.location.search);
+    let searchValue = match.location.search.split("=")[1];
+
+    if (typeof searchValue !== undefined && match.location.search) {
+      searchShows(searchValue);
+    } else {
+      await getAllShows();
+      setSearchKey("");
+      setSelectedRating("All");
+      setSelectedGenre([]);
+    }
+  }, [match]);
+
+  useEffect(async () => {
+    initialRender.current || typeof searchValue === undefined 
       ? (initialRender.current = false)
       : await getfilterShows(selectedRating, selectedGenre);
-      
+
     // eslint-disable-next-line
   }, [selectedRating, selectedGenre]);
 
@@ -128,7 +152,7 @@ const Dashboardpage = () => {
               </MenuItem>
               {ratings.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
-                  {option.label==="All"?option.label:"> "+option.label}
+                  {option.label === "All" ? option.label : "> " + option.label}
                 </MenuItem>
               ))}
             </Select>
@@ -163,16 +187,17 @@ const Dashboardpage = () => {
           </FormControl>
         </Grid>
       </Grid>
-      {loading && (
-        <div className={classes.load}>
-          <CircularProgress />
-        </div>
-      )}
+
       <Grid container justify="center">
-        {alertShow.display && (
+        {alertShow && (
           <Alert className={classes.message} severity="error">
-            {alertShow.message}
+            {alertShowMessage}
           </Alert>
+        )}
+         {loading && (
+          <div className={classes.load}>
+            <CircularProgress />
+          </div>
         )}
       </Grid>
       <div className={classes.root}>
@@ -188,14 +213,35 @@ const Dashboardpage = () => {
                       root: classes.titleBar,
                     }}
                   ></GridListTileBar>
-                  <Showitem {...item} key={item.id} />
+
+                  <Showitem
+                    id={item.id}
+                    name={item.name}
+                    url={"show"}
+                    image={item.image}
+                    rating={item.rating}
+                    genres={item.genres}
+                    rows={[
+                      {
+                        name: "Rating",
+                        value: item.rating.average ? item.rating.average : "NA",
+                      },
+                      { name: "Genre", value: item.genres },
+                    ]}
+                    key={item.id}
+                  />
                 </GridListTile>
               ))}
           </ThemeProvider>
         </GridList>
+       
       </div>
     </div>
   );
+};
+
+Dashboardpage.propTypes = {
+  selectedGenre: PropTypes.array,
 };
 
 export default Dashboardpage;

@@ -21,7 +21,6 @@ exports[`Verifying Search bar component renders correctly 1`] = `
         onFocus={[Function]}
         placeholder="Search TV Shows.."
         type="text"
-        value=""
       />
       <button
         className="MuiButtonBase-root MuiIconButton-root"

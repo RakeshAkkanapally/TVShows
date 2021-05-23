@@ -12,8 +12,8 @@ import React, { useContext, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import Showitem from "../components/Showitem";
 import showContext from "../reducers/showContext";
-import Header from "./../components/Header";
-import Tableitem from "./../components/Tableitem";
+import Header from "../components/Header";
+import Tableitem from "../components/Tableitem";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   message: {
-    margin: theme.spacing(9),
+    margin: theme.spacing(5),
   },
   image: {
     maxWidth: theme.spacing(50),
@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     padding: theme.spacing(6),
-    objectFit: "cover"
   },
   gridList: {
     flexWrap: "nowrap",
@@ -69,76 +68,75 @@ const theme = createMuiTheme({
   },
 });
 
-const Showpage = (match) => {
+const Episodepage = (match) => {
   const classes = useStyles();
   const {
-    getShowDetails,
-    getSeasonDetails,
+    getEpisodeDetails,
     loading,
-    selectedShow,
-    seasonsList
-    
+    episodesList,
+    selectedEpisode,
+    selectEpisode,
   } = useContext(showContext);
 
+
+  useEffect(async()=>{
+    await getEpisodeDetails(match.match.params.id, match.match.params.snum);
+    await selectEpisode(match.match.params.snum, "1");
+  },[]);
+
   useEffect(async () => {
-    await getShowDetails(match.match.params.id);
-    await getSeasonDetails(match.match.params.id);
+    await getEpisodeDetails(match.match.params.id, match.match.params.snum);
+    await selectEpisode(match.match.params.snum, match.match.params.epnum);
     // eslint-disable-next-line
-  }, []);
+  }, [selectedEpisode]);
+
+
 
   return (
     <div className={classes.root}>
       <Header />
       <Grid container spacing={2} className={classes.grid}>
-                <Grid item xs={12} sm={6} container justify="center" spacing={2}>
+        <Grid item xs={12} sm={6} container justify="center" spacing={2}>
           <img
             className={classes.image}
             src={
-              selectedShow.image
-                ? selectedShow.image.original
+              selectedEpisode.image
+                ? selectedEpisode.image.original
                 : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg"
             }
-            alt={selectedShow.name}
+            alt={selectedEpisode.name}
           />
         </Grid>
 
         <Grid item xs={12} sm={6} container spacing={2}>
           <Paper elevation={3}>
             <Tableitem
-              headerRow={{ name: "Title", value: selectedShow.name }}
+              {...selectedEpisode}
+              headerRow={{ name: "Title", value: selectedEpisode.name }}
               rows={[
-                { name: "Language", value: selectedShow.language },
+                { name: "Season", value: selectedEpisode.season },
+                { name: "Episode", value: selectedEpisode.number },
+                { name: "Type", value: selectedEpisode.type },
+                { name: "Air Date", value: selectedEpisode.airdate },
                 {
-                  name: "Genres",
-                  value: selectedShow.genres ? `${selectedShow.genres}` : "NA",
-                },
-                { name: "Premiered", value: selectedShow.premiered },
-                { name: "Website", value: selectedShow.officialSite },
-                {
-                  name: "Rating",
-                  value: selectedShow.rating
-                    ? selectedShow.rating.average
-                    : "NA",
+                  name: "Air Time",
+                  value: selectedEpisode.airtime,
                 },
               ]}
-              innerHTMLRow={[{ name: "Summary", value: selectedShow.summary }]}
+              innerHTMLRow={[
+                { name: "Summary", value: selectedEpisode.summary },
+              ]}
             />
           </Paper>
         </Grid>
-      <Grid>
-        </Grid>
-        {loading && (
-          <div className={classes.load}>
-            <CircularProgress />
-          </div>
-        )}
       </Grid>
+
       <Grid>
         <div className={classes.gridListRoot}>
           <GridList className={classes.gridList}>
             <ThemeProvider theme={theme}>
-              {seasonsList &&
-                seasonsList.map((item) => (
+              {episodesList &&
+                episodesList.map((item) => (
                   <GridListTile className={classes.gridListTile} key={item.id}>
                     <GridListTileBar
                       title={item.name}
@@ -149,12 +147,12 @@ const Showpage = (match) => {
                     ></GridListTileBar>
                     <Showitem
                       id={match.match.params.id}
+                      snum={item.season}
+                      epnum={item.number}
                       name={item.name}
-                      snum={item.number}
-                      epnum={1}
                       url={"episodes"}
                       image={item.image}
-                      rows={[{ name: "Episodes", value: item.episodeOrder }]}
+                      rows={[{ name: "Episode Number", value: item.number }]}
                       key={item.id}
                     />
                   </GridListTile>
@@ -162,9 +160,16 @@ const Showpage = (match) => {
             </ThemeProvider>
           </GridList>
         </div>
+        <Grid>
+          {!loading && (
+            <div className={classes.load}>
+              <CircularProgress />
+            </div>
+          )}
+        </Grid>
       </Grid>
     </div>
   );
 };
 
-export default Showpage;
+export default Episodepage;

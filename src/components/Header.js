@@ -61,23 +61,9 @@ function Header() {
                     <Grid item xs={6}>
                         <Paper className={classes.paper}>
                         <Searchbar />
-                            {/* <NavLink  exact to="/home" activeClassName={classes.activeLink}>
-                                <Typography className={classes.hover}>
-                                    Search
-                                </Typography>
-                            </NavLink> */}
                         </Paper> 
                          
                     </Grid>
-                    {/* <Grid item xs >
-                        <Paper className={classes.paper}>
-                            <NavLink exact to="/" activeClassName={classes.activeLink}>
-                                <Typography className={classes.hover}>
-                                    Dashboard
-                                </Typography>
-                            </NavLink>
-                        </Paper>
-                    </Grid> */}
                 </Grid>
             </AppBar>
         </div>);

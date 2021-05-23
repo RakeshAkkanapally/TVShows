@@ -10,52 +10,65 @@ import {
   ALL_SHOWS,
   SET_RATING,
   SET_GENRE,
-  
+  SET_SEASON,
+  SELECT_EPISODE,
+  SET_EPISODES,
+  SET_SEARCHKEY,
 } from "./actions";
 
 const reducer = (state, action) => {
   let newState;
 
   switch (action.type) {
-    case SEARCH_SHOWS:{
+    case SEARCH_SHOWS: {
       newState = { ...state };
       newState.enteredShow = action.payload.searchShow;
-      newState.filterShows=[];
+      newState.filterShows = [];
+      newState.alertShow = false;
       let shows = action.payload.data ? action.payload.data : [];
-      newState.shows=shows.map((item)=>{return item.show;});
-      newState.filterShows=newState.shows;
+      newState.shows = shows.map((item) => {
+        return item.show;
+      });
+      newState.filterShows = newState.shows;
       newState.loading = false;
       return newState;
     }
     case IS_LOADING:
       newState = { ...state };
       newState.loading = true;
-      newState.alertShow.display = false;
+      newState.alertShow = false;
       return newState;
     case SET_SHOW:
       newState = { ...state };
       newState.selectedShow = action.payload;
       newState.loading = false;
       return newState;
+    case SET_SEASON:
+      newState = { ...state };
+      newState.seasonsList = action.payload;
+      newState.loading = false;
+      return newState;
     case CLEAR_SHOW:
       newState = { ...state };
+      newState.loading = true;
       newState.selectedShow = [];
-      newState.loading = false;
       return newState;
     case ADD_ALERT:
       newState = { ...state };
-      newState.filterShows=[];
-      newState.shows=[];
-      newState.alertShow = action.payload;
+      newState.filterShows = [];
+      newState.shows = [];
+      newState.alertShow = action.payload.display;
+      newState.alertShowMessage = action.payload.message;
+      console.log(newState.alertShow,newState.alertShowMessage);
       newState.loading = false;
       return newState;
     case REMOVE_ALERT:
       newState = { ...state };
-      newState.alertShow.display = false;
-      newState.alertShow.message = "";
+      newState.alertShow = false;
+      newState.alertShowMessage = "";
       return newState;
-    case ALL_SHOWS:{
-      newState={...state};
+    case ALL_SHOWS: {
+      newState = { ...state };
       let shows = action.payload.data ? action.payload.data : [];
       let filteredShows = shows.sort(
         (a, b) => parseFloat(b.rating.average) - parseFloat(a.rating.average)
@@ -67,17 +80,20 @@ const reducer = (state, action) => {
     }
     case FILTER_SHOWS: {
       newState = { ...state };
-      newState.selectedRating=action.payload.showRating;
-      newState.selectedGenre=action.payload.showGenre;
+      newState.selectedRating = action.payload.showRating;
+      newState.selectedGenre = action.payload.showGenre;
       let prevShows = newState.shows;
       let shows =
-      newState.selectedRating === "All"
+        newState.selectedRating === "All"
           ? prevShows
           : prevShows.filter((show) => {
-              return Math.floor(show.rating.average) >= parseInt(newState.selectedRating);
+              return (
+                Math.floor(show.rating.average) >=
+                parseInt(newState.selectedRating)
+              );
             });
       shows =
-      newState.selectedGenre.length === 0
+        newState.selectedGenre.length === 0
           ? shows
           : shows.filter((show) => {
               let found = false;
@@ -98,18 +114,44 @@ const reducer = (state, action) => {
     }
     case CLEAR_FILTER_SHOWS:
       newState = { ...state };
+      newState.loading = true;
       newState.filterShows = [];
       return newState;
-     case SET_RATING:
-        newState = { ...state };
-        newState.selectedRating = action.payload;
-        console.log(action);
-        return newState;
-      case SET_GENRE:
-        newState = { ...state };
-        newState.selectedGenre = action.payload;
-        console.log(action);
-        return newState;
+    case SET_SEARCHKEY:
+      newState = { ...state };      
+      newState.searchKey = action.payload;
+      return newState;
+    case SET_RATING:
+      newState = { ...state };
+      newState.selectedRating = action.payload;
+      return newState;
+    case SET_GENRE:
+      newState = { ...state };
+      newState.selectedGenre = action.payload;
+      return newState;
+    case SET_EPISODES:
+      newState = { ...state };
+      newState.episodesList = action.payload.data;
+      newState.episodesList = newState.episodesList.filter((item) => {
+        if (item.season === parseInt(action.payload.snum)) {
+          return true;
+        }
+      });
+      newState.loading = false;
+      return newState;
+    case SELECT_EPISODE:
+      newState = { ...state };
+      console.log(SELECT_EPISODE, action.payload);
+      newState.selectedEpisode = newState.episodesList.find((item, index) => {
+        console.log(item, index);
+        if (item.number === parseInt(action.payload.epnum)) {
+          return true;
+        }
+      });
+
+      console.log(newState.selectedEpisode);
+      newState.loading = false;
+      return newState;
     default:
       return state;
   }

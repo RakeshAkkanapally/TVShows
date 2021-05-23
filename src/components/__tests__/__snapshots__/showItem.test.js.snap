@@ -14,21 +14,12 @@ exports[`verifying ShowItem component renders correctly 1`] = `
         className="MuiCardHeader-content"
       />
     </div>
-    <a
-      aria-current={null}
-      href="/show/1"
-      onClick={[Function]}
+    <div
+      className="MuiCardMedia-root makeStyles-media-4"
+      title="Under the Dome"
     >
-      <div
-        className="MuiCardMedia-root makeStyles-media-4"
-        style={
-          Object {
-            "backgroundImage": "url(\\"https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg\\")",
-          }
-        }
-        title="Under the Dome"
-      />
-    </a>
+       
+    </div>
     <div
       className="MuiCardContent-root"
     >
@@ -36,19 +27,10 @@ exports[`verifying ShowItem component renders correctly 1`] = `
         className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
       >
         <strong>
-           Rating: 
+          Genre:
+           
         </strong>
-         
-        6.6
-      </p>
-      <p
-        className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
-      >
-        <strong>
-           Genres: 
-        </strong>
-         
-        Drama,Science-Fiction,Thriller
+        Drama,Action
       </p>
     </div>
   </div>
@@ -78,11 +60,13 @@ exports[`verifying ShowItem component renders correctly when few props are not p
         className="MuiCardMedia-root makeStyles-media-4"
         style={
           Object {
-            "backgroundImage": "url(\\"https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg\\")",
+            "backgroundImage": "url(\\"https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg\\")",
           }
         }
         title="Under the Dome"
-      />
+      >
+         
+      </div>
     </a>
     <div
       className="MuiCardContent-root"
@@ -91,19 +75,147 @@ exports[`verifying ShowItem component renders correctly when few props are not p
         className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
       >
         <strong>
-           Rating: 
+          Genre:
+           
         </strong>
-         
         NA
       </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`verifying ShowItem component renders correctly when few props are not passed 2`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardHeader-root makeStyles-header-3"
+    >
+      <div
+        className="MuiCardHeader-content"
+      />
+    </div>
+    <a
+      aria-current={null}
+      href="/show/1"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiCardMedia-root makeStyles-media-4"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg\\")",
+          }
+        }
+        title="Under the Dome"
+      >
+         
+      </div>
+    </a>
+    <div
+      className="MuiCardContent-root"
+    >
       <p
         className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
       >
         <strong>
-           Genres: 
+          Genre:
+           
         </strong>
-         
         NA
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`verifying ShowItem component renders correctly when few props are not passed. 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardHeader-root makeStyles-header-3"
+    >
+      <div
+        className="MuiCardHeader-content"
+      />
+    </div>
+    <a
+      aria-current={null}
+      href="/show/1/episodes/undefined/undefined"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiCardMedia-root makeStyles-media-4"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg\\")",
+          }
+        }
+      >
+         
+      </div>
+    </a>
+    <div
+      className="MuiCardContent-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
+      >
+        <strong>
+          Genre:
+           
+        </strong>
+        NA
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`verifying ShowItem component renders correctly when few props are not passed. 2`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardHeader-root makeStyles-header-3"
+    >
+      <div
+        className="MuiCardHeader-content"
+      />
+    </div>
+    <div
+      className="MuiCardMedia-root makeStyles-media-4"
+      style={
+        Object {
+          "backgroundImage": "url(\\"https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg\\")",
+        }
+      }
+      title="Under the Dome"
+    >
+       
+    </div>
+    <div
+      className="MuiCardContent-root"
+    >
+      <p
+        className="MuiTypography-root makeStyles-content-5 MuiTypography-body1"
+      >
+        <strong>
+          Genre:
+           
+        </strong>
+        Drama,Action
       </p>
     </div>
   </div>

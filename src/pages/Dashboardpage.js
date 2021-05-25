@@ -135,7 +135,7 @@ const Dashboardpage = (match) => {
       <Header />
 
       <Grid container justify="center">
-        <Grid item sm container justify="flex-end">
+        <Grid item sm container justify="center">
           <FormControl variant="filled" className={classes.formControl}>
             <InputLabel id="select-filled-label">Rating</InputLabel>
             <Select
@@ -146,7 +146,7 @@ const Dashboardpage = (match) => {
               autoWidth
               data-testid="select-rating"
             >
-              <MenuItem value="">
+              <MenuItem value="" disabled>
                 <em>Please select rating</em>
               </MenuItem>
               {ratings.map((option) => (
@@ -156,8 +156,6 @@ const Dashboardpage = (match) => {
               ))}
             </Select>
           </FormControl>
-        </Grid>
-        <Grid item sm container justify="flex-start">
           <FormControl variant="filled" className={classes.formControl}>
             <InputLabel id="mutiple-checkbox-label" className={classes.label}>
               Genres
@@ -172,6 +170,7 @@ const Dashboardpage = (match) => {
               input={<Input />}
               renderValue={(selected) => selected.join(", ")}
               autoWidth
+              
               data-testid="select-genre"
             >
               <MenuItem value="">

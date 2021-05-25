@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
-import NotFoundpage from "./../NotFoundpage";
+import NotFoundpage from "../NotFoundpage";
 
 it("renders correctly", () => {
   const tree = renderer

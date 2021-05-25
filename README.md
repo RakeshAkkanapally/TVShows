@@ -105,7 +105,7 @@ To run the unit tests and to check the code coverage.
 $ npm run lint
 $ npm run lint:fix
 ESlint is used for code quality and fixing styling issues.
-it generates src/eslintrc.js file once you run lint command.
+it generates eslintrc.js file once you run lint command.
 ```
 
 # About Application

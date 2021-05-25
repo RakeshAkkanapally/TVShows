@@ -46,14 +46,8 @@ function Searchbar() {
   };
 
   return (
-    <Grid
-      container
-      spacing={0}
-      align="center"
-      justify="center"
-      direction="column"
-    >
-      <Grid item xs={12}>
+
+      <Grid  >
         <InputBase
           className={classes.input}
           placeholder="Search TV Shows.."
@@ -67,7 +61,7 @@ function Searchbar() {
           inputProps={{ "data-testid": "search" }}
         />
       </Grid>
-    </Grid>
+
   );
 }
 

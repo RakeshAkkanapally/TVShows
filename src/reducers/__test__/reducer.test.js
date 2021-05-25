@@ -39,11 +39,11 @@ describe("verify reducer page", () => {
     expect(...result.filterShows).toBe(data[0].show);
   });
 
-  it("verify reducers with empty value - SEARCH_SHOWS", () => {
+  it("verify reducers with empty value - SEARCH_SHOWS", () => { //negative
     const state = initialState;
     const result = reducer(state, {
       type: SEARCH_SHOWS,
-      payload: { searchShow: "girls" },
+      payload: { searchShow: "" },
     });
     expect(result.filterShows.length).toBe(0);
   });

@@ -1,6 +1,6 @@
 import React from "react";
 import { BaseService } from "../baseService";
-import { ServiceEndPointsList } from './../serviceEndpoints';
+import { ServiceEndPointsList } from "./../serviceEndpoints";
 
 it("verify get request", async() => {
   const base = new BaseService();

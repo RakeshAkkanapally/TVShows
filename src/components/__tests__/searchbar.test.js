@@ -7,7 +7,7 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/extend-expect";
 
 
-jest.mock('react-router-dom', () => ({
+jest.mock("react-router-dom", () => ({
   useHistory: () => ({
     push: jest.fn(),
   }),

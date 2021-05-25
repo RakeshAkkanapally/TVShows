@@ -1,6 +1,6 @@
 import reducer from "./../reducer";
 import {SELECT_EPISODE,ADD_ALERT, ALL_SHOWS, CLEAR_FILTER_SHOWS, CLEAR_SHOW, FILTER_SHOWS, IS_LOADING, REMOVE_ALERT, SEARCH_SHOWS, SET_EPISODES, SET_GENRE, SET_RATING, SET_SEARCHKEY, SET_SEASON, SET_SHOW} from "./../actions";
-import  initialState  from './../initialState.js';
+import  initialState  from "./../initialState.js";
 
 
 describe("verify reducer page", () => {

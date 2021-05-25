@@ -95,14 +95,13 @@ const Dashboardpage = (match) => {
 
   useEffect(async () => {
     setGenres(await getGenres());
-    console.log("first time");
+
     // eslint-disable-next-line
   }, []);
 
 
   useEffect(async () => {
-    console.log("match",match);
-    console.log("first time");
+
     let searchValue = match.location.search.split("=")[1];
 
     if (typeof searchValue !== undefined && match.location.search) {

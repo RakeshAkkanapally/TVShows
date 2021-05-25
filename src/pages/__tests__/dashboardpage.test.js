@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import ShowContext from "../../reducers/showContext";
-import Dashboardpage from './../Dashboardpage';
+import Dashboardpage from "./../Dashboardpage";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -84,7 +84,7 @@ describe("verify dashboard page",()=>{
 
 
    
-    screen.debug(screen.getByTestId("select-rating"))
+    screen.debug(screen.getByTestId("select-rating"));
     // let element=screen.getByTestId("select-rating");
     // fireEvent.click(element);
     screen.debug();
@@ -100,4 +100,4 @@ describe("verify dashboard page",()=>{
     // expect(screen.getByTestId("select-genre").innerHTML).toContain("Action,Drama");
   });
     
-})
+});

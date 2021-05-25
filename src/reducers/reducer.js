@@ -59,7 +59,6 @@ const reducer = (state, action) => {
       newState.shows = [];
       newState.alertShow = action.payload.display;
       newState.alertShowMessage = action.payload.message;
-      console.log(newState.alertShow,newState.alertShowMessage);
       newState.loading = false;
       return newState;
     case REMOVE_ALERT:
@@ -114,8 +113,8 @@ const reducer = (state, action) => {
     }
     case CLEAR_FILTER_SHOWS:
       newState = { ...state };
-      newState.loading = true;
       newState.filterShows = [];
+      newState.loading = true;
       return newState;
     case SET_SEARCHKEY:
       newState = { ...state };      
@@ -141,7 +140,6 @@ const reducer = (state, action) => {
       return newState;
     case SELECT_EPISODE:
       newState = { ...state };
-      console.log(SELECT_EPISODE, action.payload);
       newState.selectedEpisode = newState.episodesList.find((item, index) => {
         console.log(item, index);
         if (item.number === parseInt(action.payload.epnum)) {

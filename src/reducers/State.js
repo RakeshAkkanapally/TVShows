@@ -1,6 +1,6 @@
 import {
   SET_SHOW,
-  CLEAR_SHOW,
+  // CLEAR_SHOW,
   SEARCH_SHOWS,
   IS_LOADING,
   ADD_ALERT,
@@ -20,23 +20,9 @@ import ShowContext from "./showContext";
 import reducer from "./reducer";
 import { tvShowService } from "../services/tvShowServices";
 import PropTypes from "prop-types";
+import  initialState from "./initialState.js";
 
 const State = (props) => {
-  const initialState = {
-    shows: [],
-    selectedShow: {},
-    searchKey: "",
-    enteredShow: "",
-    selectedRating: "All",
-    selectedGenre: [],
-    loading: false,
-    alertShow: "",
-    alertShowMessage: "",
-    filterShows: [],
-    seasonsList: [],
-    episodesList: [],
-    selectedEpisode: {},
-  };
 
   const [state, dispatch] = useReducer(reducer, initialState);
   const service = new tvShowService();
@@ -134,15 +120,16 @@ const State = (props) => {
 
   const getAllShows = async () => {
     dispatch({ type: IS_LOADING });
+    clearFilterShow();
     const response = await service.getAllShows();
     dispatch({ type: ALL_SHOWS, payload: { data: response.data } });
   };
 
-  const clearShow = () => {
-    dispatch({
-      type: CLEAR_SHOW,
-    });
-  };
+  // const clearShow = () => {
+  //   dispatch({
+  //     type: CLEAR_SHOW,
+  //   });
+  // };
 
   const clearFilterShow = () => {
     setSelectedRating("All");
@@ -152,7 +139,6 @@ const State = (props) => {
       type: CLEAR_FILTER_SHOWS,
     });
   };
-  false && clearShow();
 
   return (
     <ShowContext.Provider

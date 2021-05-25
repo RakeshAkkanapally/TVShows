@@ -5,7 +5,7 @@ import Tableitem from './../Tableitem';
 
 describe("verifying TableItem component",()=>{
 
-  it("renders correctly", () => {
+  it("TableItem component renders correctly", () => {
     let props={
       "headerRow": { name: "Title", value: "Title" },
       "rows": [{ name: "row", value:"value" }],
@@ -22,7 +22,7 @@ describe("verifying TableItem component",()=>{
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders correctly", () => {
+  it("TableItem renders correctly", () => {
     let props={
       "headerRow": { name: "Title", value: "Title" },
       "rows": [{ name: "Row", value: "Title" }],

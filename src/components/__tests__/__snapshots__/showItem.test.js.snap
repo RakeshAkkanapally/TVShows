@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`verifying ShowItem component renders correctly 1`] = `
+exports[`verifying ShowItem component ShowItem renders correctly 1`] = `
 <div
   className="makeStyles-root-1"
 >

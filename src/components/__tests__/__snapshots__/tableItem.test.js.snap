@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`verifying TableItem component renders correctly 1`] = `
+exports[`verifying TableItem component TableItem component renders correctly 1`] = `
 <div
   className="MuiTableContainer-root"
 >
@@ -86,7 +86,7 @@ exports[`verifying TableItem component renders correctly 1`] = `
 </div>
 `;
 
-exports[`verifying TableItem component renders correctly 2`] = `
+exports[`verifying TableItem component TableItem renders correctly 1`] = `
 <div
   className="MuiTableContainer-root"
 >

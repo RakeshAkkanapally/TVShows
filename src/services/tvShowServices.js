@@ -71,16 +71,5 @@ export class tvShowService extends BaseService {
 
 
   }
-  async getGenresAllShows() {
 
-    try{
-        const response= await  this.get(ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI);
-     
-          return await response;
-      }catch(e){
-        console.error("The Promise is rejected!", e);
-      }
-      
-   
-  }
 }

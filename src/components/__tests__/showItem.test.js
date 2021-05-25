@@ -5,7 +5,7 @@ import Showitem from "../Showitem";
 
 describe("verifying ShowItem component",()=>{
 
-  it("renders correctly", () => {
+  it("ShowItem renders correctly", () => {
     let props={
       "id": 1,
       "name": "Under the Dome",

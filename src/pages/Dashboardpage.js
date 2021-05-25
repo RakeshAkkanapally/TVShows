@@ -21,7 +21,6 @@ import Header from "../components/Header";
 import { ThemeProvider } from "styled-components";
 import { getGenres } from "../reducers/util";
 import { Alert } from "@material-ui/lab";
-import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,7 +75,6 @@ const theme = createMuiTheme({
 });
 
 const Dashboardpage = (match) => {
-  const classes = useStyles();
   const {
     filterShows,
     getfilterShows,
@@ -93,15 +91,18 @@ const Dashboardpage = (match) => {
   } = useContext(showContext);
   const [genres, setGenres] = useState([]);
   let initialRender = useRef(true);
+  const classes = useStyles();
 
   useEffect(async () => {
     setGenres(await getGenres());
+    console.log("first time");
     // eslint-disable-next-line
   }, []);
 
 
   useEffect(async () => {
-    console.log(match.location.search);
+    console.log("match",match);
+    console.log("first time");
     let searchValue = match.location.search.split("=")[1];
 
     if (typeof searchValue !== undefined && match.location.search) {
@@ -142,10 +143,11 @@ const Dashboardpage = (match) => {
             <InputLabel id="select-filled-label">Rating</InputLabel>
             <Select
               labelId="select-filled-label"
-              id="simple-select-filled"
+              id="select-rating"
               value={selectedRating}
               onChange={handleChangeRating}
               autoWidth
+              data-testid="select-rating"
             >
               <MenuItem value="">
                 <em>Please select rating</em>
@@ -173,6 +175,7 @@ const Dashboardpage = (match) => {
               input={<Input />}
               renderValue={(selected) => selected.join(", ")}
               autoWidth
+              data-testid="select-genre"
             >
               <MenuItem value="">
                 <em></em>
@@ -238,10 +241,6 @@ const Dashboardpage = (match) => {
       </div>
     </div>
   );
-};
-
-Dashboardpage.propTypes = {
-  selectedGenre: PropTypes.array,
 };
 
 export default Dashboardpage;

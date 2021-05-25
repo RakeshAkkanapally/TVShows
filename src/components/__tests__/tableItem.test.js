@@ -3,19 +3,18 @@ import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import Tableitem from "./../Tableitem";
 
-describe("verifying TableItem component",()=>{
-
+describe("verifying TableItem component", () => {
   it("TableItem component renders correctly", () => {
-    let props={
-      "headerRow": { name: "Title", value: "Title" },
-      "rows": [{ name: "row", value:"value" }],
-      "innerHTMLRow": [{ name: "Summary", value:"summary" }]
+    let props = {
+      headerRow: { name: "Title", value: "Title" },
+      rows: [{ name: "row", value: "value" }],
+      innerHTMLRow: [{ name: "Summary", value: "summary" }],
     };
 
     const tree = renderer
       .create(
         <BrowserRouter>
-          <Tableitem {...props}/>
+          <Tableitem {...props} />
         </BrowserRouter>
       )
       .toJSON();
@@ -23,21 +22,19 @@ describe("verifying TableItem component",()=>{
   });
 
   it("TableItem renders correctly", () => {
-    let props={
-      "headerRow": { name: "Title", value: "Title" },
-      "rows": [{ name: "Row", value: "Title" }],
-      "innerHTMLRow": [{ name: "Summary", value: "Summary" }]
+    let props = {
+      headerRow: { name: "Title", value: "Title" },
+      rows: [{ name: "Row", value: "Title" }],
+      innerHTMLRow: [{ name: "Summary", value: "Summary" }],
     };
 
     const tree = renderer
       .create(
         <BrowserRouter>
-          <Tableitem {...props}/>
+          <Tableitem {...props} />
         </BrowserRouter>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  
-  
 });

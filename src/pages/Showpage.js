@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     padding: theme.spacing(6),
-    objectFit: "cover"
+    objectFit: "cover",
   },
   gridList: {
     flexWrap: "nowrap",
@@ -76,8 +76,7 @@ const Showpage = (match) => {
     getSeasonDetails,
     loading,
     selectedShow,
-    seasonsList
-    
+    seasonsList,
   } = useContext(showContext);
 
   useEffect(async () => {
@@ -90,7 +89,7 @@ const Showpage = (match) => {
     <div className={classes.root}>
       <Header />
       <Grid container spacing={2} className={classes.grid}>
-                <Grid item xs={12} sm={6} container justify="center" spacing={2}>
+        <Grid item xs={12} sm={6} container justify="center" spacing={2}>
           <img
             className={classes.image}
             src={
@@ -125,8 +124,7 @@ const Showpage = (match) => {
             />
           </Paper>
         </Grid>
-      <Grid>
-        </Grid>
+        <Grid></Grid>
         {loading && (
           <div className={classes.load}>
             <CircularProgress />

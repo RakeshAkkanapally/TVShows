@@ -1,30 +1,41 @@
 # TVShows
+
 This Project is used to show TV Shows based on rating and genre. User can search tv shows.
 
 ### Features:
 
 - [x] Initial Skelton and Setup of React Application.
+- [x] Material UI for design.
+- [x] React Hook methods.
+- [x] useReducer and useConext methods for state management.
+- [x] Unit test in jest.
+
 
 ## Table of contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [To Run Application](#to-run-application)
-* [Run Tests](#run-tests)
-* [ESlint for code quality and styling](#eSlint-for-code-quality-and-styling)
-* [About Application](#about-application)
-* [Learn More](learn-more)
 
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [To Run Application](#to-run-application)
+- [Run Tests](#run-tests)
+- [ESlint](#eSlint)
+- [About Application](#about-application)
+- [Learn More](learn-more)
+- [a link](https://reactjs.org/docs/getting-started.html)
 ## General info
+
 This project is sed to show TV Shows based on rating and genre and can search tv shows. I have used React hooks useReducer and useContext for state management. Material UI library for React components that implement Google's Material Design.
-	
+
 ## Technologies
+
 Project is created with:
-* React: 17.0.2
-* Material UI: 4.11.4
-* React Router: 5.2.0
-	
+
+- React: 17.0.2
+- Material UI: 4.11.4
+- React Router: 5.2.0
+
 ## Setup
+
 To run this project, install it locally using npm:
 
 ```
@@ -32,9 +43,46 @@ $ cd ../TVShows
 $ npm install
 
 Installs all dependencies mentioned in package.json in project directory
+
+TVShows/
+  README.md
+  node_modules/
+  package.json
+  public/
+    index.html
+  src/
+    App.js
+    App.test.js
+    index.css
+    index.js
+    logo.svg
+  components/
+    Header.js
+    Searchbar.js
+    Showitem.js
+    Tableitem.js
+  data/
+    rating.json
+  pages/
+    Dashboardpage.js
+    Episodepage.js
+    NotFounfpage.js
+    Showpage.js
+  reducers/
+    actions.js
+    initialState.js
+    reducer.js
+    showContext.js
+    State.js
+    util.js
+  services/
+    baseService.js
+    serviceEndpoints.js
+    tvShowServices.js
 ```
 
 # To Run Application
+
 ```
 $ npm start
 
@@ -43,19 +91,31 @@ Open http://localhost:3000 to view it in the browser.
 ```
 
 # Run Tests
+
 ```
 $ npm test
+$ npm run coverage
+
+To run the unit tests and to check the code coverage.
 ```
 
-# ESlint for code quality and styling
+# ESlint
+
 ```
-$ npm lint
-$ npm lint:fix
+$ npm run lint
+$ npm run lint:fix
+ESlint is used for code quality and fixing styling issues.
+it generates src/eslintrc.js file once you run lint command.
 ```
+
 # About Application
-about application
+
+```
+This Application is developed by using React Hooks methods. For state management, I used useReducer in combination with useContext.
+```
 
 # Learn More
+
 You can learn more in the Create React App documentation.
 
-To learn React, check out the React documentation.
+To learn React, check out the <a>React documentation</a>.

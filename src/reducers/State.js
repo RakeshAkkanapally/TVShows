@@ -20,10 +20,9 @@ import ShowContext from "./showContext";
 import reducer from "./reducer";
 import { tvShowService } from "../services/tvShowServices";
 import PropTypes from "prop-types";
-import  initialState from "./initialState.js";
+import initialState from "./initialState.js";
 
 const State = (props) => {
-
   const [state, dispatch] = useReducer(reducer, initialState);
   const service = new tvShowService();
 
@@ -59,7 +58,6 @@ const State = (props) => {
     setTimeout(() => {
       dispatch({ type: REMOVE_ALERT });
     }, 10000);
-    console.log(REMOVE_ALERT);
   };
 
   const getShowDetails = async (showId) => {

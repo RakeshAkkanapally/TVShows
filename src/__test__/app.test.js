@@ -5,15 +5,13 @@ import ShowContext from "../reducers/showContext";
 import App from "../App";
 
 it("App renders correctly", () => {
-
   const tree = renderer
     .create(
-      <ShowContext.Provider value={ShowContext}> 
-      <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    </ShowContext.Provider>
-     
+      <ShowContext.Provider value={ShowContext}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ShowContext.Provider>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

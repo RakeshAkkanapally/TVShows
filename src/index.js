@@ -5,8 +5,8 @@ import "./index.css";
 import State from "./reducers/State";
 
 ReactDOM.render(
-    <State>
-      <App />
-    </State>,
+  <State>
+    <App />
+  </State>,
   document.getElementById("root")
 );

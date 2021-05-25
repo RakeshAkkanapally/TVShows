@@ -99,9 +99,7 @@ const Dashboardpage = (match) => {
     // eslint-disable-next-line
   }, []);
 
-
   useEffect(async () => {
-
     let searchValue = match.location.search.split("=")[1];
 
     if (typeof searchValue !== undefined && match.location.search) {
@@ -115,7 +113,7 @@ const Dashboardpage = (match) => {
   }, [match]);
 
   useEffect(async () => {
-    initialRender.current || typeof searchValue === undefined 
+    initialRender.current || typeof searchValue === undefined
       ? (initialRender.current = false)
       : await getfilterShows(selectedRating, selectedGenre);
 
@@ -196,7 +194,7 @@ const Dashboardpage = (match) => {
             {alertShowMessage}
           </Alert>
         )}
-         {loading && (
+        {loading && (
           <div className={classes.load}>
             <CircularProgress />
           </div>
@@ -236,7 +234,6 @@ const Dashboardpage = (match) => {
               ))}
           </ThemeProvider>
         </GridList>
-       
       </div>
     </div>
   );

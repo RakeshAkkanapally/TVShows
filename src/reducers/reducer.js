@@ -117,7 +117,7 @@ const reducer = (state, action) => {
       newState.loading = true;
       return newState;
     case SET_SEARCHKEY:
-      newState = { ...state };      
+      newState = { ...state };
       newState.searchKey = action.payload;
       return newState;
     case SET_RATING:
@@ -132,6 +132,7 @@ const reducer = (state, action) => {
       newState = { ...state };
       newState.episodesList = action.payload.data;
       newState.episodesList = newState.episodesList.filter((item) => {
+        /* istanbul ignore else */
         if (item.season === parseInt(action.payload.snum)) {
           return true;
         }
@@ -142,12 +143,12 @@ const reducer = (state, action) => {
       newState = { ...state };
       newState.selectedEpisode = newState.episodesList.find((item, index) => {
         console.log(item, index);
+        /* istanbul ignore else */
         if (item.number === parseInt(action.payload.epnum)) {
           return true;
         }
       });
 
-      console.log(newState.selectedEpisode);
       newState.loading = false;
       return newState;
     default:

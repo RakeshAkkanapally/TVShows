@@ -22,12 +22,18 @@ const useStyles = makeStyles((theme) => ({
 
 function Searchbar() {
   const classes = useStyles();
-  const { searchKey, setSearchKey, getAllShows, setSelectedRating, setSelectedGenre } = useContext(ShowContext);
+  const {
+    searchKey,
+    setSearchKey,
+    getAllShows,
+    setSelectedRating,
+    setSelectedGenre,
+  } = useContext(ShowContext);
   const history = useHistory();
 
   const updateSearch = function (e) {
     setSearchKey(e.target.value);
-    if(e.target.value.length === 0) {
+    if (e.target.value.length === 0) {
       getAllShows();
       setSelectedRating("All");
       setSelectedGenre([]);

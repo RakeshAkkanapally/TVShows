@@ -78,19 +78,21 @@ const Episodepage = (match) => {
     selectEpisode,
   } = useContext(showContext);
 
-
-  useEffect(async()=>{
-    await getEpisodeDetails(match.match.params.id, match.match.params.snum);
-    await selectEpisode(match.match.params.snum, "1");
-  },[]);
+  console.log("first Episodepage");
 
   useEffect(async () => {
+    console.log("first Episodepage useEffect");
+    await getEpisodeDetails(match.match.params.id, match.match.params.snum);
+    await selectEpisode(match.match.params.snum, "1");
+  }, []);
+
+  useEffect(async () => {
+    console.log("first Episodepage useEffect selectedEpisode");
+
     await getEpisodeDetails(match.match.params.id, match.match.params.snum);
     await selectEpisode(match.match.params.snum, match.match.params.epnum);
     // eslint-disable-next-line
   }, [selectedEpisode]);
-
-
 
   return (
     <div className={classes.root}>

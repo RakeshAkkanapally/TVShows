@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   load: {
     display: "flex",
     justifyContent: "center",
+    height: "50vh",
     alignItems: "center",
   },
   message: {

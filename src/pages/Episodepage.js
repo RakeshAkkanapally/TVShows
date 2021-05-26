@@ -1,5 +1,5 @@
 import {
-  CircularProgress,
+  
   makeStyles,
   Grid,
   Paper,
@@ -72,7 +72,6 @@ const Episodepage = (match) => {
   const classes = useStyles();
   const {
     getEpisodeDetails,
-    loading,
     episodesList,
     selectedEpisode,
     selectEpisode,
@@ -127,7 +126,6 @@ const Episodepage = (match) => {
           </Paper>
         </Grid>
       </Grid>
-
       <Grid>
         <div className={classes.gridListRoot}>
           <GridList className={classes.gridList}>
@@ -157,13 +155,8 @@ const Episodepage = (match) => {
             </ThemeProvider>
           </GridList>
         </div>
-        <Grid>
-          {!loading && (
-            <div className={classes.load}>
-              <CircularProgress />
-            </div>
-          )}
-        </Grid>
+
+
       </Grid>
     </div>
   );

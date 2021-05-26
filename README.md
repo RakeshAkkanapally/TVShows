@@ -8,7 +8,7 @@ This Project is used to show TV Shows based on rating and genre. User can search
 - [x] Material UI for design.
 - [x] React Hook methods.
 - [x] useReducer and useConext methods for state management.
-- [x] Unit test in jest.
+- [x] Unit tests in jest.
 
 
 ## Table of contents
@@ -21,7 +21,7 @@ This Project is used to show TV Shows based on rating and genre. User can search
 - [ESlint](#eSlint)
 - [About Application](#about-application)
 - [Learn More](learn-more)
-- [a link](https://reactjs.org/docs/getting-started.html)
+
 ## General info
 
 This project is sed to show TV Shows based on rating and genre and can search tv shows. I have used React hooks useReducer and useContext for state management. Material UI library for React components that implement Google's Material Design.
@@ -118,4 +118,4 @@ This Application is developed by using React Hooks methods. For state management
 
 You can learn more in the Create React App documentation.
 
-To learn React, check out the <a>React documentation</a>.
+To learn React, check out the <a href="https://reactjs.org/docs/getting-started.html">React documentation</a>, <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.

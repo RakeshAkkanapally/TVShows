@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     margin: "0 auto 0",
     textAlign: "center",
-    fontSize: theme.spacing(1.5),
+    fontSize: theme.spacing(1.5)
   },
 }));
 
@@ -58,9 +58,7 @@ const Showitem = (props) => {
                   : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg"
               }
               title={props.name}
-            >
-              {" "}
-            </CardMedia>
+            > </CardMedia>
           </NavLink>
         ) : (
           <CardMedia
@@ -71,9 +69,7 @@ const Showitem = (props) => {
                 : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg"
             }
             title={props.name}
-          >
-            {" "}
-          </CardMedia>
+          > </CardMedia>
         )}
         <CardContent>
           {props.rows &&

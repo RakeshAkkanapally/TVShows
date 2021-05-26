@@ -13,11 +13,8 @@ const useStyles = makeStyles((theme) => ({
     padding: `0px ${theme.spacing(2)}px`,
     borderRadius: theme.spacing(2),
     margin: theme.spacing(2),
-    fontSize: "small",
-  },
-  message: {
-    width: "40%",
-  },
+    fontSize: "medium",
+    }
 }));
 
 function Searchbar() {
@@ -47,7 +44,7 @@ function Searchbar() {
 
   return (
 
-      <Grid  >
+      <Grid >
         <InputBase
           className={classes.input}
           placeholder="Search TV Shows.."
@@ -57,6 +54,7 @@ function Searchbar() {
               <SearchIcon fontSize="small" />
             </IconButton>
           }
+          
           onChange={updateSearch}
           inputProps={{ "data-testid": "search" }}
         />

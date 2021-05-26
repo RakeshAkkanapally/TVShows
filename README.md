@@ -55,7 +55,6 @@ TVShows/
     App.test.js
     index.css
     index.js
-    logo.svg
   components/
     Header.js
     Searchbar.js

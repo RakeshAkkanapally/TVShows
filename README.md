@@ -9,7 +9,7 @@ This Project is used to show TV Shows based on rating and genre. User can search
 - [x] React Hook methods.
 - [x] useReducer and useConext methods for state management.
 - [x] Created reusable components - ShowItem, TableItem, Header and SearchBar.
-- [x] Three pages for navigation - Dashboard Page, Shows Page and Episoded Page.
+- [x] Three pages for navigation - Dashboard Page, Shows Page and Episodes Page.
 - [x] Unit tests in jest.
 
 
@@ -26,7 +26,7 @@ This Project is used to show TV Shows based on rating and genre. User can search
 
 ## General info
 
-This project is sed to show TV Shows based on rating and genre and can search tv shows. I have used React hooks useReducer and useContext for state management. Material UI library for React components that implement Google's Material Design.
+This project is to show TV Shows based on rating and genre and can search tv shows. I have used React hooks useReducer and useContext for state management. Material UI library for React components that implement Google's Material Design.
 
 ## Technologies
 

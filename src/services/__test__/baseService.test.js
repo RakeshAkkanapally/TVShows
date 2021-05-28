@@ -1,17 +1,14 @@
 import { BaseService } from "../baseService";
-import { ServiceEndPointsList } from "./../serviceEndpoints";
+import { baseUrl, showsURI } from "./../serviceEndpoints";
 
 describe("verify base service class", () => {
   it("verify get request", async () => {
     const base = new BaseService();
     const addMock = jest.spyOn(base, "get");
 
-    let endPoint = ServiceEndPointsList.baseUrl;
-    let queryString = ServiceEndPointsList.showsURI;
-
-    const result = addMock(endPoint, queryString);
+    const result = addMock(baseUrl, showsURI);
     await expect(result).resolves.toHaveProperty("data");
-    const result2 = addMock(endPoint + queryString);
+    const result2 = addMock(baseUrl + showsURI);
     await expect(result2).resolves.toHaveProperty("data");
   });
 });

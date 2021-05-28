@@ -8,12 +8,12 @@ import {
   FILTER_SHOWS,
   CLEAR_FILTER_SHOWS,
   ALL_SHOWS,
-  SET_RATING,
   SET_GENRE,
   SET_SEASON,
   SELECT_EPISODE,
   SET_EPISODES,
   SET_SEARCHKEY,
+  ERROR_RESPONSE,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -26,11 +26,14 @@ const reducer = (state, action) => {
       newState.filterShows = [];
       newState.alertShow = false;
       let shows = action.payload.data ? action.payload.data : [];
-      newState.shows = shows.map((item) => {
+      shows = shows.map((item) => {
         return item.show;
       });
-      newState.filterShows = newState.shows;
+      newState.filterShows = shows.sort(
+        (a, b) => b.rating.average - a.rating.average
+      );
       newState.loading = false;
+      newState.dashboardTitle = `Showing Results for '${newState.enteredShow}'`;
       return newState;
     }
     case IS_LOADING:
@@ -40,7 +43,7 @@ const reducer = (state, action) => {
       return newState;
     case SET_SHOW:
       newState = { ...state };
-      newState.selectedShow = action.payload;
+      newState.selectedShow = action.payload.data;
       newState.loading = false;
       return newState;
     case SET_SEASON:
@@ -51,6 +54,7 @@ const reducer = (state, action) => {
     case CLEAR_SHOW:
       newState = { ...state };
       newState.loading = true;
+      newState.errorDisplay = false;
       newState.selectedShow = [];
       return newState;
     case ADD_ALERT:
@@ -70,7 +74,7 @@ const reducer = (state, action) => {
       newState = { ...state };
       let shows = action.payload.data ? action.payload.data : [];
       let filteredShows = shows.sort(
-        (a, b) => parseFloat(b.rating.average) - parseFloat(a.rating.average)
+        (a, b) => b.rating.average - a.rating.average
       );
       newState.filterShows = filteredShows;
       newState.shows = filteredShows;
@@ -79,18 +83,8 @@ const reducer = (state, action) => {
     }
     case FILTER_SHOWS: {
       newState = { ...state };
-      newState.selectedRating = action.payload.showRating;
       newState.selectedGenre = action.payload.showGenre;
-      let prevShows = newState.shows;
-      let shows =
-        newState.selectedRating === "All"
-          ? prevShows
-          : prevShows.filter((show) => {
-              return (
-                Math.floor(show.rating.average) >=
-                parseInt(newState.selectedRating)
-              );
-            });
+      let shows = newState.shows;
       shows =
         newState.selectedGenre.length === 0
           ? shows
@@ -109,20 +103,21 @@ const reducer = (state, action) => {
       );
       newState.filterShows = filteredShows;
       newState.loading = false;
+      newState.selectedGenre.length!==0?
+       newState.dashboardTitle = `Filter Results for Generes: ${newState.selectedGenre}` :
+       newState.dashboardTitle = `All Shows`;
       return newState;
     }
     case CLEAR_FILTER_SHOWS:
       newState = { ...state };
       newState.filterShows = [];
+      newState.errorDisplay = false;
       newState.loading = true;
+      newState.dashboardTitle = `All Shows`;
       return newState;
     case SET_SEARCHKEY:
       newState = { ...state };
       newState.searchKey = action.payload;
-      return newState;
-    case SET_RATING:
-      newState = { ...state };
-      newState.selectedRating = action.payload;
       return newState;
     case SET_GENRE:
       newState = { ...state };
@@ -141,16 +136,33 @@ const reducer = (state, action) => {
       return newState;
     case SELECT_EPISODE:
       newState = { ...state };
-      newState.selectedEpisode = newState.episodesList.find((item, index) => {
-        console.log(item, index);
+      newState.selectedEpisode = newState.episodesList.find((episode) => {
         /* istanbul ignore else */
-        if (item.number === parseInt(action.payload.epnum)) {
+        if (
+          !isNaN(action.payload.epnum) &&
+          !isNaN(action.payload.snum) &&
+          episode.number === parseInt(action.payload.epnum) &&
+          episode.season === parseInt(action.payload.snum)
+        ) {
           return true;
         }
       });
-
+      if (newState.selectedEpisode === undefined) {
+        newState.errorDisplay = true;
+        newState.errorMessage = `Requested season or episode number not found`;
+      }
       newState.loading = false;
       return newState;
+    case ERROR_RESPONSE: {
+      newState = { ...state };
+      let response = action.payload.response;
+      newState.errorDisplay = true;
+      if (response && response.status === 404)
+        newState.errorMessage = response.statusText;
+      else newState.errorMessage = `Something Went Wrong!`;
+      return newState;
+    }
+
     default:
       return state;
   }

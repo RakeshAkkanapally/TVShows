@@ -1,7 +1,7 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true,
+        "es2015": true,
         "jest/globals": true,
         "node": true
     },
@@ -22,6 +22,12 @@ module.exports = {
     ],
     "rules": {
         "semi": ["error", "always"],
-        "quotes": ["error", "double"]
-    }
+        "quotes": ["error", "double", {"allowTemplateLiterals": true}],
+        
+    },
+    "settings": {
+        "react": {
+          "version": "detect",
+        },
+      }
 };

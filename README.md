@@ -8,6 +8,8 @@ This Project is used to show TV Shows based on rating and genre. User can search
 - [x] Material UI for design.
 - [x] React Hook methods.
 - [x] useReducer and useConext methods for state management.
+- [x] Created reusable components - ShowItem, TableItem, Header and SearchBar.
+- [x] Three pages for navigation - Dashboard Page, Shows Page and Episoded Page.
 - [x] Unit tests in jest.
 
 
@@ -94,7 +96,7 @@ Open http://localhost:3000 to view it in the browser.
 
 ```
 $ npm test
-$ npm run coverage
+$ npm test -- --coverage
 
 To run the unit tests and to check the code coverage.
 ```

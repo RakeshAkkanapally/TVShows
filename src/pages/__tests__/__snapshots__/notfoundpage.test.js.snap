@@ -1,34 +1,148 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
-<div
-  className="makeStyles-root-1"
-  id="wrapper"
->
-  <div
-    className="makeStyles-text-2"
-    id="info"
-  >
-    <h3>
-      This page could not be found
-      <a
-        aria-current="page"
-        className="active"
-        href="/"
-        onClick={[Function]}
-        style={Object {}}
+exports[`Not found page renders correctly 1`] = `
+<div>
+  <div>
+    <header
+      className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary makeStyles-root-5 MuiPaper-elevation4"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
-        <p
-          className="MuiTypography-root MuiTypography-body1"
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
         >
-          Dashbaord
-        </p>
-      </a>
-    </h3>
+          <a
+            aria-current="page"
+            className="makeStyles-logo-8 active"
+            href="/"
+            onClick={[Function]}
+            style={Object {}}
+          >
+            <div
+              className="MuiToolbar-root MuiToolbar-regular makeStyles-icon-10 MuiToolbar-gutters"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M18 4l2 3h-3l-2-3h-2l2 3h-3l-2-3H8l2 3H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4zm-6.75 11.25L10 18l-1.25-2.75L6 14l2.75-1.25L10 10l1.25 2.75L14 14l-2.75 1.25zm5.69-3.31L16 14l-.94-2.06L13 11l2.06-.94L16 8l.94 2.06L19 11l-2.06.94z"
+                />
+              </svg>
+              <h6
+                className="MuiTypography-root MuiTypography-h6"
+              >
+                <strong>
+                  TV SHOWS
+                </strong>
+              </h6>
+            </div>
+          </a>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+        >
+          <div
+            className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
+          >
+            <div
+              className="MuiGrid-root"
+            >
+              <div
+                className="MuiInputBase-root makeStyles-input-11 MuiInputBase-adornedEnd"
+                onClick={[Function]}
+              >
+                <input
+                  className="MuiInputBase-input MuiInputBase-inputAdornedEnd"
+                  data-testid="search"
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="Search TV Shows.."
+                  type="text"
+                />
+                <button
+                  className="MuiButtonBase-root MuiIconButton-root"
+                  data-testid="searchIcon"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
   </div>
-  <img
-    className="makeStyles-image-3"
-    src="https://i.imgur.com/qIufhof.png"
-  />
+  <div
+    className="makeStyles-root-1"
+    id="wrapper"
+  >
+    <div
+      id="info"
+    >
+      <h3
+        className="makeStyles-text-2"
+      >
+        Error!
+        <hr />
+      </h3>
+      <div
+        className="makeStyles-textContent-3"
+      >
+        <div>
+          This page isn't available. Sorry about that.
+        </div>
+        <br />
+        Go to
+         
+        <a
+          aria-current="page"
+          className="active"
+          href="/"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Dashboard Page
+        </a>
+      </div>
+    </div>
+    <img
+      className="makeStyles-image-4"
+      src="https://i.imgur.com/qIufhof.png"
+    />
+  </div>
 </div>
 `;

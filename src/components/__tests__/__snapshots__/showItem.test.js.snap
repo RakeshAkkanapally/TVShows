@@ -8,18 +8,8 @@ exports[`verifying ShowItem component ShowItem renders correctly 1`] = `
     className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
   >
     <div
-      className="MuiCardHeader-root makeStyles-header-3"
-    >
-      <div
-        className="MuiCardHeader-content"
-      />
-    </div>
-    <div
       className="MuiCardMedia-root makeStyles-media-4"
-      title="Under the Dome"
-    >
-       
-    </div>
+    />
     <div
       className="MuiCardContent-root"
     >
@@ -44,13 +34,6 @@ exports[`verifying ShowItem component renders correctly when few props are not p
   <div
     className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <div
-      className="MuiCardHeader-root makeStyles-header-3"
-    >
-      <div
-        className="MuiCardHeader-content"
-      />
-    </div>
     <a
       aria-current={null}
       href="/show/1"
@@ -58,15 +41,7 @@ exports[`verifying ShowItem component renders correctly when few props are not p
     >
       <div
         className="MuiCardMedia-root makeStyles-media-4"
-        style={
-          Object {
-            "backgroundImage": "url(\\"https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg\\")",
-          }
-        }
-        title="Under the Dome"
-      >
-         
-      </div>
+      />
     </a>
     <div
       className="MuiCardContent-root"
@@ -92,13 +67,6 @@ exports[`verifying ShowItem component renders correctly when few props are not p
   <div
     className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <div
-      className="MuiCardHeader-root makeStyles-header-3"
-    >
-      <div
-        className="MuiCardHeader-content"
-      />
-    </div>
     <a
       aria-current={null}
       href="/show/1"
@@ -111,10 +79,7 @@ exports[`verifying ShowItem component renders correctly when few props are not p
             "backgroundImage": "url(\\"https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg\\")",
           }
         }
-        title="Under the Dome"
-      >
-         
-      </div>
+      />
     </a>
     <div
       className="MuiCardContent-root"
@@ -140,13 +105,6 @@ exports[`verifying ShowItem component renders correctly when few props are not p
   <div
     className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <div
-      className="MuiCardHeader-root makeStyles-header-3"
-    >
-      <div
-        className="MuiCardHeader-content"
-      />
-    </div>
     <a
       aria-current={null}
       href="/show/1/episodes/undefined/undefined"
@@ -159,9 +117,7 @@ exports[`verifying ShowItem component renders correctly when few props are not p
             "backgroundImage": "url(\\"https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg\\")",
           }
         }
-      >
-         
-      </div>
+      />
     </a>
     <div
       className="MuiCardContent-root"
@@ -188,23 +144,13 @@ exports[`verifying ShowItem component renders correctly when few props are not p
     className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation1 MuiPaper-rounded"
   >
     <div
-      className="MuiCardHeader-root makeStyles-header-3"
-    >
-      <div
-        className="MuiCardHeader-content"
-      />
-    </div>
-    <div
       className="MuiCardMedia-root makeStyles-media-4"
       style={
         Object {
           "backgroundImage": "url(\\"https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg\\")",
         }
       }
-      title="Under the Dome"
-    >
-       
-    </div>
+    />
     <div
       className="MuiCardContent-root"
     >

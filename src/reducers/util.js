@@ -6,8 +6,8 @@ export const getGenres = async () => {
   const AllGenres = new Set();
   response.data.forEach((show) => {
     show &&
-      show.genres.forEach((item) => {
-        AllGenres.add(item);
+      show.genres.forEach((genre) => {
+        AllGenres.add(genre);
       });
   });
   return Array.from(AllGenres);

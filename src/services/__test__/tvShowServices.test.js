@@ -231,7 +231,7 @@ describe("verify all service calls", () => {
     ];
     axios.get.mockImplementationOnce(() => Promise.resolve(data));
 
-    const result = await service.getEpisode("1");
+    const result = await service.getEpisodes("1");
     expect(result[0].name).toBeDefined();
     expect(result[0].name).toBe(data[0].name);
   });
@@ -240,7 +240,7 @@ describe("verify all service calls", () => {
     const errorMessage = "Network Error";
     try {
       axios.get.mockImplementationOnce(() => Promise.reject(errorMessage));
-      await service.getEpisode();
+      await service.getEpisodes();
     } catch (e) {
       expect(e).toBe(errorMessage);
     }

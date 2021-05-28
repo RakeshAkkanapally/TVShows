@@ -5,7 +5,7 @@ exports[`verifying TableItem component TableItem component renders correctly 1`]
   className="MuiTableContainer-root"
 >
   <table
-    aria-label="simple table"
+    aria-label="table"
     className="MuiTable-root makeStyles-table-1"
     role={null}
   >
@@ -91,7 +91,7 @@ exports[`verifying TableItem component TableItem renders correctly 1`] = `
   className="MuiTableContainer-root"
 >
   <table
-    aria-label="simple table"
+    aria-label="table"
     className="MuiTable-root makeStyles-table-1"
     role={null}
   >

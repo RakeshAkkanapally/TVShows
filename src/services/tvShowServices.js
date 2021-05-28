@@ -1,63 +1,37 @@
 import { BaseService } from "./baseService";
-import { ServiceEndPointsList } from "./serviceEndpoints";
+import {
+  baseUrl,
+  showsURI,
+  searchURI,
+  seasonsURI,
+  episodesURI,
+} from "./serviceEndpoints.js";
 
 export class tvShowService extends BaseService {
   async getAllShows() {
-    try {
-      const response = await this.get(
-        ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI
-      );
-      return response;
-    } catch (e) {
-      console.error("The Promise is rejected!", e);
-    }
+    const response = await this.get(`${baseUrl}${showsURI}`);
+    return response;
   }
 
-  async getSearchShow(queryString) {
-    try {
-      const response = await this.get(
-        ServiceEndPointsList.baseUrl + ServiceEndPointsList.searchURI,
-        "?q=" + queryString
-      );
-      return response;
-    } catch (e) {
-      console.error("The Promise is rejected!", e);
-    }
+  async getSearchShow(searchKey) {
+    const response = await this.get(`${baseUrl}${searchURI}?q=${searchKey}`);
+    return response;
   }
 
-  async getSingleShow(queryString) {
-    try {
-      const response = await this.get(
-        ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI,
-        "/" + queryString
-      );
-      return response;
-    } catch (e) {
-      console.error("The Promise is rejected!", e);
-    }
+  async getSingleShow(showId) {
+    const response = await this.get(`${baseUrl}${showsURI}/${showId}`);
+    return response;
   }
 
-  async getSeasons(queryString) {
-    try {
-      const response = await this.get(
-        ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI,
-        "/" + queryString + ServiceEndPointsList.seasonsURI
-      );
-      return response;
-    } catch (e) {
-      console.error("The Promise is rejected!", e);
-    }
+  async getSeasons(showId) {
+    const response = await this.get(
+      `${baseUrl}${showsURI}/${showId}${seasonsURI}`);
+    return response;
   }
 
-  async getEpisode(queryString) {
-    try {
-      const response = await this.get(
-        ServiceEndPointsList.baseUrl + ServiceEndPointsList.showsURI,
-        "/" + queryString + ServiceEndPointsList.episodesURI
-      );
-      return response;
-    } catch (e) {
-      console.error("The Promise is rejected!", e);
-    }
+  async getEpisodes(showId) {
+    const response = await this.get(
+      `${baseUrl}${showsURI}/${showId}${episodesURI}`);
+    return response;
   }
 }

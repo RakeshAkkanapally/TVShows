@@ -3,7 +3,6 @@ export const initialState = {
   selectedShow: {},
   searchKey: "",
   enteredShow: "",
-  selectedRating: "All",
   selectedGenre: [],
   loading: false,
   alertShow: "",
@@ -12,6 +11,9 @@ export const initialState = {
   seasonsList: [],
   episodesList: [],
   selectedEpisode: {},
+  errorMessage: "",
+  errorDisplay: false,
+  dashboardTitle: "All Shows"
 };
 
 export default initialState;

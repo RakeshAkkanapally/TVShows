@@ -3,17 +3,20 @@ import {
   makeStyles,
   Grid,
   Paper,
-  createMuiTheme,
   GridList,
   GridListTile,
   GridListTileBar,
 } from "@material-ui/core";
 import React, { useContext, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
-import Showitem from "../components/Showitem";
+import ShowItem from "../components/ShowItem";
 import showContext from "../reducers/showContext";
 import Header from "./../components/Header";
-import Tableitem from "./../components/Tableitem";
+import Tableitem from "../components/TableItem";
+import NotFoundpage from "./NotFoundpage";
+import { createMuiTheme } from "@material-ui/core";
+
+const theme = createMuiTheme();
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +32,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(9),
   },
   image: {
-    maxWidth: theme.spacing(50),
+    maxWidth: theme.spacing(60),
+    maxHeight: theme.spacing(60),
   },
   table: {
     maxWidth: theme.spacing(50),
@@ -46,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     background:
       "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
       "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+    paddingLeft: theme.spacing(0.4),
   },
   gridListRoot: {
     display: "flex",
@@ -55,20 +60,12 @@ const useStyles = makeStyles((theme) => ({
   },
   "@global": {
     ".MuiGridListTile-root": {
-      width: theme.spacing(50),
+      width: theme.spacing(35),
     },
   },
 }));
 
-const theme = createMuiTheme({
-  overrides: {
-    MuiButton: {
-      root: {
-        fontSize: "2rem",
-      },
-    },
-  },
-});
+
 
 const Showpage = (match) => {
   const classes = useStyles();
@@ -78,14 +75,17 @@ const Showpage = (match) => {
     loading,
     selectedShow,
     seasonsList,
+    errorDisplay,
   } = useContext(showContext);
 
   useEffect(async () => {
     await getShowDetails(match.match.params.id);
     await getSeasonDetails(match.match.params.id);
+
     // eslint-disable-next-line
   }, []);
 
+  if (errorDisplay) return <NotFoundpage />;
   return (
     <div className={classes.root}>
       <Header />
@@ -93,11 +93,7 @@ const Showpage = (match) => {
         <Grid item xs={12} sm={6} container justify="center" spacing={2}>
           <img
             className={classes.image}
-            src={
-              selectedShow.image
-                ? selectedShow.image.original
-                : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg"
-            }
+            src={getImage(selectedShow)}
             alt={selectedShow.name}
           />
         </Grid>
@@ -105,23 +101,25 @@ const Showpage = (match) => {
         <Grid item xs={12} sm={6} container spacing={2}>
           <Paper elevation={3}>
             <Tableitem
-              headerRow={{ name: "Title", value: selectedShow.name }}
+              headerRow={{ name: `Title`, value: selectedShow.name }}
               rows={[
-                { name: "Language", value: selectedShow.language },
+                { name: `Language`, value: selectedShow.language },
                 {
-                  name: "Genres",
-                  value: selectedShow.genres ? `${selectedShow.genres}` : "NA",
+                  name: `Genres`,
+                  value: selectedShow.genres ? `${selectedShow.genres}` : `NA`,
                 },
-                { name: "Premiered", value: selectedShow.premiered },
-                { name: "Website", value: selectedShow.officialSite },
+                { name: `Premiered`, value: selectedShow.premiered },
+                { name: `Website`, value: selectedShow.officialSite },
                 {
-                  name: "Rating",
+                  name: `Rating`,
                   value: selectedShow.rating
                     ? selectedShow.rating.average
-                    : "NA",
+                      ? selectedShow.rating.average
+                      : `NA`
+                    : `NA`,
                 },
               ]}
-              innerHTMLRow={[{ name: "Summary", value: selectedShow.summary }]}
+              innerHTMLRow={[{ name: `Summary`, value: selectedShow.summary }]}
             />
           </Paper>
         </Grid>
@@ -139,21 +137,23 @@ const Showpage = (match) => {
               {seasonsList &&
                 seasonsList.map((item) => (
                   <GridListTile className={classes.gridListTile} key={item.id}>
-                    <GridListTileBar
-                      title={item.name}
-                      titlePosition="top"
-                      classes={{
-                        root: classes.titleBar,
-                      }}
-                    ></GridListTileBar>
-                    <Showitem
+                    <strong>
+                      <GridListTileBar
+                        title={`Season` + item.number}
+                        titlePosition="top"
+                        classes={{
+                          root: classes.titleBar,
+                        }}
+                      ></GridListTileBar>
+                    </strong>
+                    <ShowItem
                       id={match.match.params.id}
-                      name={item.name}
                       snum={item.number}
                       epnum={1}
                       url={"episodes"}
                       image={item.image}
-                      rows={[{ name: "Episodes", value: item.episodeOrder }]}
+                      imageType={`medium`}
+                      rows={[{ name: `Episodes`, value: item.episodeOrder }]}
                       key={item.id}
                     />
                   </GridListTile>
@@ -165,5 +165,10 @@ const Showpage = (match) => {
     </div>
   );
 };
+function getImage(selectedShow) {
+  return selectedShow.image
+    ? selectedShow.image.original
+    : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg";
+}
 
 export default Showpage;

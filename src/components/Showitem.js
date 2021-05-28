@@ -2,7 +2,6 @@ import React from "react";
 import {
   Card,
   CardContent,
-  CardHeader,
   CardMedia,
   makeStyles,
   Typography,
@@ -13,12 +12,12 @@ import PropTypes from "prop-types";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2),
-    maxWidth: theme.spacing(35),
+    maxWidth: theme.spacing(30),
     alignItems: "center",
   },
   card: {
-    width: theme.spacing(40),
-    height: theme.spacing(57),
+    width: theme.spacing(30),
+    height: theme.spacing(45),
   },
   header: {
     maxHeight: theme.spacing(1),
@@ -32,16 +31,15 @@ const useStyles = makeStyles((theme) => ({
   content: {
     margin: "0 auto 0",
     textAlign: "center",
-    fontSize: theme.spacing(1.5)
+    fontSize: theme.spacing(1.5),
   },
 }));
 
-const Showitem = (props) => {
+const ShowItem = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
-        <CardHeader className={classes.header} />
         {props.url ? (
           <NavLink
             to={
@@ -52,24 +50,14 @@ const Showitem = (props) => {
           >
             <CardMedia
               className={classes.media}
-              image={
-                props.image
-                  ? props.image.medium
-                  : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg"
-              }
-              title={props.name}
-            > </CardMedia>
+              image={getImage(props.image, props.imageType)}
+            ></CardMedia>
           </NavLink>
         ) : (
           <CardMedia
             className={classes.media}
-            image={
-              props.image
-                ? props.image.original
-                : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg"
-            }
-            title={props.name}
-          > </CardMedia>
+            image={getImage(props.image, props.imageType)}
+          ></CardMedia>
         )}
         <CardContent>
           {props.rows &&
@@ -85,11 +73,19 @@ const Showitem = (props) => {
   );
 };
 
-Showitem.propTypes = {
+function getImage(image, type) {
+  return image
+    ? image[type]
+    : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg";
+  
+  }
+
+ShowItem.propTypes = {
   name: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   num: PropTypes.number,
   image: PropTypes.object,
+  imageType: PropTypes.string,
   medium: PropTypes.string,
   rating: PropTypes.object,
   average: PropTypes.string,
@@ -101,4 +97,4 @@ Showitem.propTypes = {
   epnum: PropTypes.number,
 };
 
-export default Showitem;
+export default ShowItem;

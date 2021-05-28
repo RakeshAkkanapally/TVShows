@@ -17,13 +17,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Searchbar() {
+function SearchBar() {
   const classes = useStyles();
   const {
     searchKey,
     setSearchKey,
     getAllShows,
-    setSelectedRating,
     setSelectedGenre,
   } = useContext(ShowContext);
   const history = useHistory();
@@ -32,7 +31,6 @@ function Searchbar() {
     setSearchKey(e.target.value);
     if (e.target.value.length === 0) {
       getAllShows();
-      setSelectedRating("All");
       setSelectedGenre([]);
     }
   };
@@ -54,7 +52,6 @@ function Searchbar() {
               <SearchIcon fontSize="small" />
             </IconButton>
           }
-          
           onChange={updateSearch}
           inputProps={{ "data-testid": "search" }}
         />
@@ -63,4 +60,4 @@ function Searchbar() {
   );
 }
 
-export default Searchbar;
+export default SearchBar;

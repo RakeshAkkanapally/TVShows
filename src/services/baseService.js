@@ -6,6 +6,4 @@ export class BaseService {
 
     return axios.get(url);
   }
-
-  //postData()
 }

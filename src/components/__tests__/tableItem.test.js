@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
-import Tableitem from "./../Tableitem";
+import Tableitem from "../TableItem";
 
 describe("verifying TableItem component", () => {
   it("TableItem component renders correctly", () => {

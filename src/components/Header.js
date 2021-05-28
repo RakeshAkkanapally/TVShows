@@ -5,11 +5,10 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-// import Paper from "@material-ui/core/Paper";
-import MovieIcon from "@material-ui/icons/Movie";
+import MovieFilterIcon from "@material-ui/icons/MovieFilter";
 import { NavLink } from "react-router-dom";
 import React from "react";
-import Searchbar from "./Searchbar";
+import SearchBar from "./SearchBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
       color: "#f00",
     },
   },
+  icon: {
+    color:"orange",
+  }
 }));
 
 function Header() {
@@ -49,8 +51,8 @@ function Header() {
         <Grid container direction="row" justify="flex-end" alignItems="center">
           <Grid item xs={6}>
             <NavLink exact to="/" className={classes.logo}>
-              <Toolbar>
-                <MovieIcon fontSize="large" />
+              <Toolbar className={classes.icon}>
+                <MovieFilterIcon fontSize="large" />
                 <Typography variant="h6">
                   <strong>TV SHOWS</strong>
                 </Typography>
@@ -64,7 +66,7 @@ function Header() {
               justify="flex-end"
               alignItems="center"
             >
-              <Searchbar />
+              <SearchBar />
             </Grid>
           </Grid>
         </Grid>

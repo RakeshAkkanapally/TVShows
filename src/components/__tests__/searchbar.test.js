@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Searchbar from "../Searchbar";
+import Searchbar from "../SearchBar";
 import ShowContext from "../../reducers/showContext";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -16,7 +16,6 @@ describe("Verifying Search bar component", () => {
   const searchShows = jest.fn();
   const setSearchKey = jest.fn();
   const getAllShows = jest.fn();
-  const setSelectedRating = jest.fn();
   const setSelectedGenre = jest.fn();
 
   it("renders correctly", () => {
@@ -27,7 +26,6 @@ describe("Verifying Search bar component", () => {
             searchShows,
             setSearchKey,
             getAllShows,
-            setSelectedRating,
             setSelectedGenre,
           }}
         >
@@ -45,7 +43,6 @@ describe("Verifying Search bar component", () => {
           searchShows,
           setSearchKey,
           getAllShows,
-          setSelectedRating,
           setSelectedGenre,
         }}
       >
@@ -63,7 +60,6 @@ describe("Verifying Search bar component", () => {
           searchShows,
           setSearchKey,
           getAllShows,
-          setSelectedRating,
           setSelectedGenre,
         }}
       >
@@ -82,7 +78,6 @@ describe("Verifying Search bar component", () => {
           searchShows,
           setSearchKey,
           getAllShows,
-          setSelectedRating,
           setSelectedGenre,
         }}
       >

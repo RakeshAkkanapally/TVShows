@@ -15,8 +15,7 @@ import {
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { makeStyles, Grid } from "@material-ui/core";
 import showContext from "../reducers/showContext";
-import Showitem from "../components/Showitem";
-import ratingsData from "../data/ratings.json";
+import ShowItem from "../components/ShowItem";
 import Header from "../components/Header";
 import { ThemeProvider } from "styled-components";
 import { getGenres } from "../reducers/util";
@@ -28,12 +27,17 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "space-around",
     overflow: "hidden",
+    padding: `${theme.spacing(1)}px ${theme.spacing(10)}px ${theme.spacing(
+      5
+    )}px`,
   },
   formControl: {
-    backgroundColor: "#fff",
+    backgroundColor: "#ddd",
     margin: theme.spacing(1),
-    minWidth: theme.spacing(20),
-    maxWidth: theme.spacing(30),
+    minWidth: theme.spacing(15),
+    maxWidth: theme.spacing(25),
+    minHeight: theme.spacing(6),
+    maxHeight: theme.spacing(6),
     borderRadius: theme.spacing(1),
   },
   load: {
@@ -42,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
     height: "50vh",
     alignItems: "center",
   },
+  dropdown: {
+    paddingRight: theme.spacing(10),
+    height: theme.spacing(5)
+  },
   message: {
     margin: theme.spacing(9),
   },
@@ -49,14 +57,38 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "nowrap",
     transform: "translateZ(0)",
   },
-  titleBar: {
+  title: {
+    color: theme.palette.primary.light,
+  },
+  titleBarName: {
     background:
       "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
       "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+    textAlign: "center",
+  },
+  titleBarRating: {
+    background:
+      "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
+      "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+    textAlign: "right",
+    paddingRight: theme.spacing(1.5),
+  },
+  showTitle: {
+    padding: theme.spacing(10),
+  },
+  gridTitle: {
+    margin: 0,
+    color:"orange",
+    padding: `0 ${theme.spacing(12)}px`,
+    maxWidth: "60%"
+  },
+  gridTitleHeader: {
+    marginBottom: theme.spacing(0.5),
+    fontSize: "medium"
   },
   "@global": {
     ".MuiGridListTile-root": {
-      width: theme.spacing(50),
+      width: theme.spacing(35),
     },
     ".MuiInput-root": {
       padding: "0 0 0 10px",
@@ -64,17 +96,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const theme = createMuiTheme({
-  overrides: {
-    MuiButton: {
-      root: {
-        fontSize: "2rem",
-      },
-    },
-  },
-});
+const theme = createMuiTheme();
 
 const Dashboardpage = (match) => {
+  const classes = useStyles();
   const {
     filterShows,
     getfilterShows,
@@ -82,80 +107,49 @@ const Dashboardpage = (match) => {
     alertShow,
     alertShowMessage,
     getAllShows,
-    selectedRating,
-    setSelectedRating,
     selectedGenre,
     setSelectedGenre,
     searchShows,
     setSearchKey,
+    dashboardTitle,
   } = useContext(showContext);
   const [genres, setGenres] = useState([]);
   let initialRender = useRef(true);
-  const classes = useStyles();
 
   useEffect(async () => {
     setGenres(await getGenres());
-
     // eslint-disable-next-line
   }, []);
 
   useEffect(async () => {
     let searchValue = match.location.search.split("=")[1];
-
-    if (typeof searchValue !== undefined && match.location.search) {
+    setSearchKey("");
+    if (match.location.search && typeof searchValue !== undefined) {
       searchShows(searchValue);
     } else {
       await getAllShows();
-      setSearchKey("");
-      setSelectedRating("All");
       setSelectedGenre([]);
     }
+    setSelectedGenre([]);
   }, [match]);
 
   useEffect(async () => {
     initialRender.current || typeof searchValue === undefined
       ? (initialRender.current = false)
-      : await getfilterShows(selectedRating, selectedGenre);
+      : await getfilterShows(selectedGenre);
 
     // eslint-disable-next-line
-  }, [selectedRating, selectedGenre]);
+  }, [selectedGenre]);
 
   const handleChange = (event) => {
     setSelectedGenre(event.target.value);
   };
 
-  const handleChangeRating = (event) => {
-    setSelectedRating(event.target.value);
-  };
-
-  const ratings = ratingsData;
-
   return (
     <div>
       <Header />
-
       <Grid container justify="center">
-        <Grid item sm container justify="center">
-          <FormControl variant="filled" className={classes.formControl}>
-            <InputLabel id="select-filled-label">Rating</InputLabel>
-            <Select
-              labelId="select-filled-label"
-              id="select-rating"
-              value={selectedRating}
-              onChange={handleChangeRating}
-              autoWidth
-              data-testid="select-rating"
-            >
-              <MenuItem value="" disabled>
-                <em>Please select rating</em>
-              </MenuItem>
-              {ratings.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label === "All" ? option.label : "> " + option.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+        <Grid item sm container justify="flex-end" className={classes.dropdown}>
           <FormControl variant="filled" className={classes.formControl}>
             <InputLabel id="mutiple-checkbox-label" className={classes.label}>
               Genres
@@ -169,8 +163,7 @@ const Dashboardpage = (match) => {
               onChange={handleChange}
               input={<Input />}
               renderValue={(selected) => selected.join(", ")}
-              autoWidth
-              
+              autoWidth={true}
               data-testid="select-genre"
             >
               <MenuItem value="">
@@ -186,7 +179,10 @@ const Dashboardpage = (match) => {
           </FormControl>
         </Grid>
       </Grid>
-
+      <div className={classes.gridTitle}>
+        <div className={classes.gridTitleHeader}>{dashboardTitle}</div>
+        <hr/>
+      </div>
       <Grid container justify="center">
         {alertShow && (
           <Alert className={classes.message} severity="error">
@@ -199,33 +195,44 @@ const Dashboardpage = (match) => {
           </div>
         )}
       </Grid>
+
       <div className={classes.root}>
         <GridList className={classes.gridList}>
           <ThemeProvider theme={theme}>
             {filterShows &&
               filterShows.map((item) => (
                 <GridListTile className={classes.gridListTile} key={item.id}>
-                  <GridListTileBar
-                    title={item.name}
-                    titlePosition="top"
-                    classes={{
-                      root: classes.titleBar,
-                    }}
-                  ></GridListTileBar>
+                  <strong>
+                    <GridListTileBar
+                      title={item.name}
+                      titlePosition="bottom"
+                      classes={{
+                        root: classes.titleBarName,
+                      }}
+                    ></GridListTileBar>
+                    <GridListTileBar
+                      title={item.rating.average ? item.rating.average : "NA"}
+                      titlePosition="top"
+                      classes={{
+                        root: classes.titleBarRating,
+                      }}
+                    ></GridListTileBar>
+                  </strong>
 
-                  <Showitem
+                  <ShowItem
                     id={item.id}
                     name={item.name}
-                    url={"show"}
+                    url={`show`}
                     image={item.image}
+                    imageType={`original`}
                     rating={item.rating}
                     genres={item.genres}
                     rows={[
                       {
-                        name: "Rating",
-                        value: item.rating.average ? item.rating.average : "NA",
+                        name: `Rating`,
+                        value: item.rating.average ? item.rating.average : `NA`,
                       },
-                      { name: "Genre", value: item.genres },
+                      { name: `Genre`, value: item.genres },
                     ]}
                     key={item.id}
                   />

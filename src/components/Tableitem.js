@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Tableitem = ({ headerRow, innerHTMLRow, rows }) => {
+const TableItem = ({ headerRow, innerHTMLRow, rows }) => {
   const classes = useStyles();
   return (
     <TableContainer>
-      <Table className={classes.table} aria-label="simple table">
+      <Table className={classes.table} aria-label="table">
         <TableHead>
           <TableRow>
             <TableCell align="left">
@@ -58,9 +58,9 @@ const Tableitem = ({ headerRow, innerHTMLRow, rows }) => {
   );
 };
 
-Tableitem.propTypes = {
+TableItem.propTypes = {
   headerRow: PropTypes.object,
   innerHTMLRow: PropTypes.array,
   rows: PropTypes.array,
 };
-export default Tableitem;
+export default TableItem;

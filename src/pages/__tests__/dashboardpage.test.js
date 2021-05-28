@@ -2,15 +2,16 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import ShowContext from "../../reducers/showContext";
 import Dashboardpage from "./../Dashboardpage";
-import {  render, screen } from "@testing-library/react";
-import { userEvent } from '@testing-library/user-event';
+import { render, screen } from "@testing-library/react";
+
 
 describe("verify dashboard page", () => {
+  const useStyles=jest.fn();
 
   it("verify dashbard page displayed on launch", () => {
     let match = {
       location: {
-        search: ""
+        search: "",
       },
       match: {
         path: "/search",
@@ -19,26 +20,23 @@ describe("verify dashboard page", () => {
         params: {},
       },
     };
-
     const dummyValue = {
       setSearchKey: jest.fn(),
-      getAllShows :jest.fn(),
-      setSelectedRating: jest.fn(),
+      getAllShows: jest.fn(),
       setSelectedGenre: jest.fn(),
       selectedGenre: [],
-      selectedRating: ["All"],
     };
-    render(
-      <BrowserRouter>
-        <ShowContext.Provider value={dummyValue}>
-          <Dashboardpage {...match} />
-        </ShowContext.Provider>
-      </BrowserRouter>
-    );
+
+      render(
+        <BrowserRouter>
+          <ShowContext.Provider value={dummyValue}>
+            <Dashboardpage {...match} />
+          </ShowContext.Provider>
+        </BrowserRouter>
+      );
+   
     expect(screen.getByText("TV SHOWS")).toBeInTheDocument;
-
   });
-
 
   it("verify rating and genre can be updated", () => {
     let match = {
@@ -58,24 +56,24 @@ describe("verify dashboard page", () => {
 
     const dummyValue = {
       searchShows: jest.fn(),
-      selectedRating: ["All"],
+      setSearchKey: jest.fn(),
       selectedGenre: ["Action", "Drama"],
-      alertShow: true,
-      loading: true
+      alertShow: false,
+      loading: false,
     };
-    render(
-      <BrowserRouter>
-        <ShowContext.Provider value={dummyValue}>
-          <Dashboardpage {...match} />
-        </ShowContext.Provider>
-      </BrowserRouter>
+
+   render(
+        <BrowserRouter>
+          <ShowContext.Provider value={dummyValue}>
+            <Dashboardpage {...match} />
+          </ShowContext.Provider>
+        </BrowserRouter>
     );
 
-    expect(screen.getByTestId("select-rating").innerHTML).toContain("All");
     expect(screen.getByTestId("select-genre").innerHTML).toContain(
       "Action,Drama"
     );
-  });
 
-  
+});
+
 });

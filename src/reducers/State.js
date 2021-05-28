@@ -37,12 +37,11 @@ const State = (props) => {
     if (searchShow) {
       await clearFilterShow();
       const response = await service.getSearchShow(searchShow);
-      if (response.data.length !== 0) {
-        dispatch({
-          type: SEARCH_SHOWS,
-          payload: { data: response.data, searchShow },
-        });
-      } else {
+      dispatch({
+        type: SEARCH_SHOWS,
+        payload: { data: response.data, searchShow },
+      });
+      if (response.data.length === 0) {
         dispatch({
           type: ADD_ALERT,
           payload: { display: true, message: "No Results Found!" },

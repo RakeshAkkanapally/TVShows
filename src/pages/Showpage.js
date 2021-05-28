@@ -114,7 +114,7 @@ const Showpage = (match) => {
                   name: `Rating`,
                   value: selectedShow.rating
                     ? selectedShow.rating.average
-                      ? selectedShow.rating.average
+                      ? `${selectedShow.rating.average}*`
                       : `NA`
                     : `NA`,
                 },

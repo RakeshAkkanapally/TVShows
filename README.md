@@ -95,7 +95,7 @@ Open http://localhost:3000 to view it in the browser.
 
 ```
 $ npm test
-$ npm test -- --coverage
+$ npm test -- --coverage --watchAll
 
 To run the unit tests and to check the code coverage.
 ```

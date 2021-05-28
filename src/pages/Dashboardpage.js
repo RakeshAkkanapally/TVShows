@@ -6,6 +6,7 @@ import {
   GridList,
   GridListTile,
   GridListTileBar,
+  IconButton,
   Input,
   InputLabel,
   ListItemText,
@@ -20,6 +21,7 @@ import Header from "../components/Header";
 import { ThemeProvider } from "styled-components";
 import { getGenres } from "../reducers/util";
 import { Alert } from "@material-ui/lab";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,6 +59,11 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "nowrap",
     transform: "translateZ(0)",
   },
+  starIcon :{
+    color : "orange",
+    fontSize: "large",
+    paddingBottom: theme.spacing(0.5)
+  },
   title: {
     color: theme.palette.primary.light,
   },
@@ -64,14 +71,15 @@ const useStyles = makeStyles((theme) => ({
     background:
       "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
       "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
-    textAlign: "center",
+    textAlign: "left",
+    paddingRight: theme.spacing(1.5),
   },
   titleBarRating: {
     background:
       "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
-      "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+      "rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 0%)",
     textAlign: "right",
-    paddingRight: theme.spacing(1.5),
+    paddingRight: theme.spacing(3)
   },
   showTitle: {
     padding: theme.spacing(10),
@@ -130,7 +138,6 @@ const Dashboardpage = (match) => {
       await getAllShows();
       setSelectedGenre([]);
     }
-    setSelectedGenre([]);
   }, [match]);
 
   useEffect(async () => {
@@ -209,15 +216,22 @@ const Dashboardpage = (match) => {
                       classes={{
                         root: classes.titleBarName,
                       }}
+                      actionIcon={
+                        <IconButton aria-label={`star`}>
+                          <StarBorderIcon  className={classes.starIcon}/>
+                        </IconButton>
+                      }
                     ></GridListTileBar>
+                      
                     <GridListTileBar
-                      title={item.rating.average ? item.rating.average : "NA"}
-                      titlePosition="top"
+                      title={item.rating.average ? `${item.rating.average}` : `NA`}
+                      titlePosition="bottom"
                       classes={{
                         root: classes.titleBarRating,
                       }}
+
                     ></GridListTileBar>
-                  </strong>
+                </strong>
 
                   <ShowItem
                     id={item.id}

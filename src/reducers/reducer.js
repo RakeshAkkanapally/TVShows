@@ -25,7 +25,7 @@ const reducer = (state, action) => {
       newState.enteredShow = action.payload.searchShow;
       newState.filterShows = [];
       newState.alertShow = false;
-      let shows = action.payload.data ? action.payload.data : [];
+      let shows = action.payload.data ? action.payload.data : newState.shows;
       shows = shows.map((item) => {
         return item.show;
       });
@@ -34,6 +34,9 @@ const reducer = (state, action) => {
       );
       newState.loading = false;
       newState.dashboardTitle = `Showing Results for '${newState.enteredShow}'`;
+      newState.filterShows.length===0 ?
+      newState.dashboardTitle = `No Results for '${newState.enteredShow}'` :
+      ``;
       return newState;
     }
     case IS_LOADING:
@@ -60,7 +63,6 @@ const reducer = (state, action) => {
     case ADD_ALERT:
       newState = { ...state };
       newState.filterShows = [];
-      newState.shows = [];
       newState.alertShow = action.payload.display;
       newState.alertShowMessage = action.payload.message;
       newState.loading = false;
@@ -104,9 +106,9 @@ const reducer = (state, action) => {
       newState.filterShows = filteredShows;
       newState.loading = false;
       newState.selectedGenre.length!==0?
-       newState.dashboardTitle = `Filter Results for Generes: ${newState.selectedGenre}` :
+       newState.dashboardTitle = `Filter Results for Genres: ${newState.selectedGenre}` :
        newState.dashboardTitle = `All Shows`;
-      return newState;
+       return newState;
     }
     case CLEAR_FILTER_SHOWS:
       newState = { ...state };
